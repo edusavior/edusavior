@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>Facebook Login</title>
+
+<head>
+  <title>Auth Test</title>
+</head>
+
+<body>
+
+  <a id="loginbtn" onclick="javascript:loginWithFacebook()">Login with facebook</a>
+
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '2669229613354017',
+        cookie: true,
+        xfbml: true,
+        version: 'v7.0'
+      });
+
+      FB.AppEvents.logPageView();
+      // fbSDKLoaded()
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+  </script>
+
+  <script src="./facebookscript.js"></script>
+
+
+</body>
+
+
+</html>
