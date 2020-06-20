@@ -24,7 +24,8 @@
 
 
 ## Team Member :
-  - 1. Aaml Almomani
+  - 1. Amal Almomani
   - 2. Osama Mousa 
   - 3. Reham Al-Sobh
-  - 4. Hammad ali
+  - 4. Hammad Ali
+
