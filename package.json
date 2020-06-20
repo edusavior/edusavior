@@ -1,7 +1,7 @@
 {
   "name": "edusavior",
   "version": "1.0.0",
-  "description": "## Team Member :   - 1. Hammad ali   - 2. Osama Mousa    - 3. Reham Al-Sobh   - 4. Aaml Almomani",
+  "description": "## Team Member :   - 1. Hammad ali   - 2. Osama Mousa    - 3. Reham Al-Sobh   - 4. Amal Almomani",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
