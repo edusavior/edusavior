@@ -22,14 +22,12 @@ module.exports = async (req, res, next) => {
     console.log('The TOKEN', remoteToken);
     // get the user obj from GH by sending the token from Google
     const remoteUser = await getRemoteUserInfo(remoteToken);
-    console.log('Googggggggggggggggggggle USER', remoteUser);
+    // console.log('Goodle USER', remoteUser);
     // sending the GH user and save it to db get back local user + token
     const [user, token] = await getUser(remoteUser);
-    console.log('LOCAL USER', user);
+    // console.log('LOCAL USER', user);
     // since this is a middleware we can put user and token on the req obj
-    // req.user = remoteUser;
     req.user = user;
-
     req.token = token;
     next();
   } catch (err) {
@@ -37,7 +35,7 @@ module.exports = async (req, res, next) => {
   }
 };
 async function exchangeCodeForToken(code) {
-  // console.log('yyyyyyyyyyyyyyyyyyyy' ,code);
+  
   const tokenResponse = await superagent.post(tokenServerUrl).send({
     code: code,
     client_id: CLIENT_ID,
@@ -48,10 +46,12 @@ async function exchangeCodeForToken(code) {
 
   // console.log('tokenResponse.body',tokenResponse.body);
   const access_token = tokenResponse.body.access_token;
+  // console.log('ttttttttttttttttttttttttttttttttt', access_token );
 
   return access_token;
 }
 async function getRemoteUserInfo(token) {
+  // console.log('mmmmmmm',token);
   let userResponse = await superagent
     .get(remoteAPI)
     .set('Authorization', `Bearer ${token}`);
@@ -61,15 +61,14 @@ async function getRemoteUserInfo(token) {
   return user;
 }
 async function getUser(remoteUser) {
-  
   const userRecord = {
     username: remoteUser.name,
     password: 'Rehaaaam', 
   };
-  console.log('userrrrrrrrrrrrrrrrrrrecord',userRecord);
+  console.log('userrrrrrrrrrrrrrecord',remoteUser);
   const user = await users.saveUser(userRecord);
-  console.log('uuuuuuuuuuuser',user);
+  // console.log('uuuuuuuuuuuser',user);
   let token = users.generateToken(user);
-  console.log('1111uuuuser',user,'toooooooooooooken',token);
+  // console.log('1111uuuuser',user,'toooooooooooooken',token);
   return [user, token];
 }
