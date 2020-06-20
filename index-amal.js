@@ -50,7 +50,4 @@ app.post('/login-with-facebook', async (req, res)=> {
     res.json({status: 'error', data: 'stop'});
   }
 });
-// Start the web server
-// require('./src/app.js').start(process.env.PORT);
-
 app.listen(process.env.PORT, ()=> console.log(`up and running on port ${process.env.PORT}`));
