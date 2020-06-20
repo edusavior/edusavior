@@ -63,10 +63,11 @@ async function getRemoteUserInfo(token) {
 async function getUser(remoteUser) {
   const userRecord = {
     username: remoteUser.name,
-    password: 'Rehaaaam', 
+    password: 'Rehaaaam',
+    email:remoteUser.email, 
   };
-  console.log('userrrrrrrrrrrrrrecord',remoteUser);
-  const user = await users.saveUser(userRecord);
+  // console.log('userrrrrrrrrrrrrrecord',userRecord);
+  const user = await users.save(userRecord);
   // console.log('uuuuuuuuuuuser',user);
   let token = users.generateToken(user);
   // console.log('1111uuuuser',user,'toooooooooooooken',token);
