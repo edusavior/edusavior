@@ -1,0 +1,20 @@
+{
+  "name": "edusavior",
+  "version": "1.0.0",
+  "description": "## Team Member :   - 1. Hammad ali   - 2. Osama Mousa    - 3. Reham Al-Sobh   - 4. Aaml Almomani",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edusavior/edusavior.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edusavior/edusavior/issues"
+  },
+  "homepage": "https://github.com/edusavior/edusavior#readme"
+}
