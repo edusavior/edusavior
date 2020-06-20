@@ -22,25 +22,22 @@ module.exports = async (req, res, next) => {
     console.log('The TOKEN', remoteToken);
     // get the user obj from GH by sending the token from Google
     const remoteUser = await getRemoteUserInfo(remoteToken);
-    console.log('Goodle USER', remoteUser);
+    console.log('Googggggggggggggggggggle USER', remoteUser);
     // sending the GH user and save it to db get back local user + token
-    // const [user, token] = await getUser(remoteUser);
-    // console.log('LOCAL USER', user);
+    const [user, token] = await getUser(remoteUser);
+    console.log('LOCAL USER', user);
     // since this is a middleware we can put user and token on the req obj
-    req.user = remoteUser;
-    // req.token = token;
+    // req.user = remoteUser;
+    req.user = user;
+
+    req.token = token;
     next();
   } catch (err) {
     next(err.message);
   }
 };
 async function exchangeCodeForToken(code) {
-  console.log('yyyyyyyyyyyyyyyyyyyy' ,code);
-  console.log('yyyyyyyyyy' ,CLIENT_ID);
-  console.log('yyyyyyyyyyyyyyyyyyyy' ,CLIENT_SECRET);
-
-
-
+  // console.log('yyyyyyyyyyyyyyyyyyyy' ,code);
   const tokenResponse = await superagent.post(tokenServerUrl).send({
     code: code,
     client_id: CLIENT_ID,
@@ -49,28 +46,27 @@ async function exchangeCodeForToken(code) {
     grant_type: 'authorization_code',
   });
 
-  console.log('tokenResponse.body',tokenResponse.body);
+  // console.log('tokenResponse.body',tokenResponse.body);
   const access_token = tokenResponse.body.access_token;
-  console.log('ttttttttttttttttttttttttttttttttt', access_token );
 
   return access_token;
 }
 async function getRemoteUserInfo(token) {
-  console.log('mmmmmmm',token);
   let userResponse = await superagent
     .get(remoteAPI)
     .set('Authorization', `Bearer ${token}`);
 
   let user = userResponse.body;
-  console.log('useeeeeeeeeeeeer',user);
+  // console.log('useeeeeeeeeeeeer',user);
   return user;
 }
 async function getUser(remoteUser) {
+  
   const userRecord = {
-    username: remoteUser.login,
+    username: remoteUser.name,
     password: 'Rehaaaam', 
   };
-  console.log('userrecord',userRecord.username);
+  console.log('userrrrrrrrrrrrrrrrrrrecord',userRecord);
   const user = await users.saveUser(userRecord);
   console.log('uuuuuuuuuuuser',user);
   let token = users.generateToken(user);
