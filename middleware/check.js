@@ -9,7 +9,7 @@ function getModel(req, res, next) {
 
 
   switch (model) {
-  case 'categories':
+  case 'courses':
     req.model = mdC;
     next();
     return;

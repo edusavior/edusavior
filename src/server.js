@@ -1,5 +1,5 @@
 const express = require('express');
-// const router = require('./auth/routes/router.js');
+const router = require('./edu-server/routes/router.js');
 const router_auth = require('./auth/routes/router.js');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -16,6 +16,7 @@ app.use(cors());
 
 // app.use('/api/v1', router);
 app.use('/', router_auth);
+app.use('/', router);
 
 
 

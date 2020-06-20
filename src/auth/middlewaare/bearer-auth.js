@@ -1,4 +1,4 @@
-const users = require('../models/users/users-model.js');
+const users = require('../models/users/user-model.js');
 
 module.exports = (req, res, next) => {
   if (!req.headers.authorization) {
@@ -8,14 +8,15 @@ module.exports = (req, res, next) => {
     if (auth === 'Bearer') {
       users
         .authenticateToken(token)
-        .then((validUser) => {
+        .then((validUser) => {          
           req.user = {
             username : validUser.username,
             capabilities : validUser.capabilities,
           };
+          req.role = validUser.role;
           next();
         })
-        .catch((e) => next('Invalid login', e.message));
+        // .catch((e) => next('Invalid login', e.message));
     } else {
       next('Invalid auth header');
     }

@@ -14,9 +14,8 @@
 const mongoose = require('mongoose');
 
 const quizzes = mongoose.Schema({
-    //   name:{type:String,require:true},
-    //   display_name:{type:String,require:true},
-    //   description:{type:String,require:true},
+  username:{ type:String,require:true },
+  question:{ type:String,require:true },
 });
 
 module.exports = mongoose.model('quizzes', quizzes);
