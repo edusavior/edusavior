@@ -8,7 +8,7 @@ const app = express();
 
 
 const notFoundHandler = require('../middleware/404.js');
-const errorHandler = require('../middleware/500.js');
+// const errorHandler = require('../middleware/500.js');
 
 app.use(express.json());
 app.use(morgan('dev'));
@@ -16,6 +16,7 @@ app.use(cors());
 
 
 // app.use('/api/v1', router);
+app.use(express.static('./public'));
 app.use('/', router_auth);
 app.use('/', router);
 
