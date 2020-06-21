@@ -1,5 +1,6 @@
+'use strict';
 const express = require('express');
-// const router = require('./auth/routes/router.js');
+const router = require('./edu-server/routes/router.js');
 const router_auth = require('./auth/routes/router.js');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -15,16 +16,20 @@ app.use(cors());
 
 
 // app.use('/api/v1', router);
+app.use(express.static('./public'));
 app.use('/', router_auth);
+app.use('/', router);
 
 
 
 app.use('*', notFoundHandler);
-// app.use(errorHandler);
+app.use(errorHandler);
+
 module.exports = {
   server: app,
   start: (port) => {
     const PORT = port || process.env.PORT || 3000;
+
     app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`),
     );
   },
