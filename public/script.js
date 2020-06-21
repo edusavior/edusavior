@@ -12,8 +12,21 @@ const queryString = Object.keys(options)
     return `${key}=${encodeURIComponent(options[key])}`;
   })
   .join('&');
-
-console.log('Query', queryString);
 const authUrl = `${URL}?${queryString}`;
 const link = document.getElementById('googleOauth');
 link.setAttribute('href', authUrl);
+
+//linkedIn
+let URL_linkedIn='https://www.linkedin.com/oauth/v2/authorization';
+let option={
+  response_type:'code',
+  client_id:'77y0bfyk5tckn8',
+  redirect_uri: 'http://localhost:3000/linkedIn_oauth',
+  scope:'r_liteprofile',
+};
+let QueryString=Object.keys(option).map((key)=>{
+  return `${key}=`+encodeURIComponent(option[key]);
+}).join('&');
+let aoutUrl=`${URL_linkedIn}?${QueryString}`;
+let linkedIn =document.getElementById('linked');
+linkedIn.setAttribute('href',aoutUrl);

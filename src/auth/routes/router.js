@@ -3,13 +3,24 @@ const express = require('express');
 const users = require('../models/users/user-model.js');
 const oauth = require('../middlewaare/oauth.js');
 const basicAuth = require('../middlewaare/basic.js');
-
+// const path = require('path');
 const router = express.Router();
-
+const linkedinOuth = require('../middlewaare/linkedIn-oauth.js');
 router.post('/signup', saveHandler);
 
 router.post('/signin', basicAuth , signinHandler);
 router.get('/oauth', oauth,oauthentication);
+
+
+
+
+
+
+router.get('/linkedIn_oauth', linkedinOuth, (req, res) => {
+  res.json({ token: req.token  , user:req.user});
+});
+
+
 
 
 
