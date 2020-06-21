@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 const io = require('socket.io-client');
 const edu = io.connect('http://localhost:3000/edu');
 
-const userSchema = require('../../lib/auth/models/users-model');
+const userSchema = require('../../src/auth/models/users/user-model');
 
 edu.on('connect', () => {
   const messages = [];
