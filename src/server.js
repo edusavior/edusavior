@@ -8,7 +8,7 @@ const app = express();
 
 
 const notFoundHandler = require('../middleware/404.js');
-// const errorHandler = require('../middleware/500.js');
+const errorHandler = require('../middleware/500.js');
 
 app.use(express.json());
 app.use(morgan('dev'));
@@ -23,7 +23,7 @@ app.use('/', router);
 
 
 app.use('*', notFoundHandler);
-// app.use(errorHandler);
+app.use(errorHandler);
 
 module.exports = {
   server: app,

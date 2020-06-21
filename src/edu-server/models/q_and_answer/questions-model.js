@@ -1,7 +1,7 @@
 'use strict';
 
 const questionsSchema = require('./questions-schema');
-const mongoCourses = require('../mongo');
+const mongoCourses = require('../../../auth/models/mongo.js');
 
 class Questions extends mongoCourses {
   constructor() {

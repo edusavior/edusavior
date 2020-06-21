@@ -15,8 +15,8 @@ module.exports = (req, res, next) => {
           };
           req.role = validUser.role;
           next();
-        })
-        // .catch((e) => next('Invalid login', e.message));
+        });
+      // .catch((e) => next('Invalid login', e.message));
     } else {
       next('Invalid auth header');
     }
