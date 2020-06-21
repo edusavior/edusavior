@@ -1,21 +1,18 @@
-'use strict';
-
-/**
- * schema for quizzes
- * @module quizzes
- */
-
-/**
-  * @property {String} name -required
-  * @property {String} display_name - required
-  * @property {String} description - required
-  */
-
 const mongoose = require('mongoose');
-
-const quizzes = mongoose.Schema({
-  username:{ type:String,require:true },
-  question:{ type:String,require:true },
+const QuizSchema = new mongoose.Schema({
+  description: String,
+  alternatives: [
+    {
+      text: {
+        type: String,
+        required: true,
+      },
+      isCorrect: {
+        type: Boolean,
+        required: true,
+        default: false,
+      },
+    },
+  ],
 });
-
-module.exports = mongoose.model('quizzes', quizzes);
+module.exports = mongoose.model('Question',QuizSchema);
