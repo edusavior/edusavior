@@ -10,7 +10,10 @@ const SECRET = process.env.SECRET || 'mysecret';
 * Model Model
 * @constructor Products
 */
-
+const roles = {
+  student : ['read'],
+  instructor : ['read' , 'addcourse'],
+};
 
 
 class Users extends Model {
@@ -35,9 +38,10 @@ class Users extends Model {
   }
   generateToken(user){
     const token =  jwt.sign({
-      exp: Math.floor(Date.now() / 1000) + (15 * 60),
       algorithm:  'RS384',
       username: user.username,
+      role : user.role,
+      capabilities : roles[user.role],
     }, SECRET);
     return token;
   }
