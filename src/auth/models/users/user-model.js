@@ -1,4 +1,8 @@
 'use strict';
+/**
+ *  @module  userModel
+ * 
+ */
 const schema = require('./user-schema.js');
 const Model = require('../mongo.js');
 const bcryptjs = require('bcryptjs');

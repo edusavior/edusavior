@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: auth/middlewaare/acl.js</title>
+    <title>JSDoc: Source: auth/routes/router.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: auth/middlewaare/acl.js</h1>
+    <h1 class="page-title">Source: auth/routes/router.js</h1>
 
     
 
@@ -28,31 +28,69 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 /**
- *  @module acl
+ * in this module you will find all the auth routes for our project
+ *  @module  authrouter
  * 
  */
 
+const express = require('express');
+
+const users = require('../models/users/user-model.js');
+const oauth = require('../middlewaare/oauth.js');
+const basicAuth = require('../middlewaare/basic.js');
+
+const router = express.Router();
+
+router.post('/signup', saveHandler);
+
+router.post('/signin', basicAuth , signinHandler);
+router.get('/oauth', oauth,oauthentication);
+
+
 /**
- *  expecting the bearerAuth middleware to add the user on the req
- * check if this capability allowed to the user or not 
- * @param {Object} req -  req.user 
+   * for /signup
+   * function to save new user in database then generate token
+ * @method saveHandler
+ * @param {Object} req - request 
  * @param {Object} res -response 
- * @param {Function} next -middleware next()
  */
-module.exports = (capability) => {
-  return (req, res, next) => {
-    try {
-      if (req.user.capabilities.includes(capability)) {
-        next();
-      } else {
-        res.json({error : 'Access Denied'});
-      }
-    } catch (e) {
-      next('Invalid Login');
-    }
-  };
-};
-    </code></pre>
+
+async function saveHandler (req,res){
+  try{
+    const user = await users.save(req.body);
+    const token = users.generateToken(user);
+    res.json({ token });
+  }catch(err){
+    console.error(err);
+    
+    res.status(403).send('user already exists');
+  }
+    
+}
+/**
+ * for /signin
+   *  basicAuth will add token to the req
+ * @method signinHandler
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ */
+function signinHandler (req, res)  {
+  res.json({ token: req.token , user: req.user });
+}
+
+/**
+   * for /oauth
+   * oauth will add token to the req
+ * @method oauthentication
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ */
+function oauthentication(req,res){
+
+  res.json({ token: req.token  , user:req.user});
+
+}
+module.exports = router;</code></pre>
         </article>
     </section>
 
