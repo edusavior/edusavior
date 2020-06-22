@@ -1,7 +1,20 @@
 'use strict';
+/**
+ * User schema
+ * @module userSchema
+ */
 const mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs');
-
+/**
+ * Users schema
+ * @property {string} username 
+ * @property {string} passwoord
+ * @property {string} email
+ * @property {string} role
+ * @property {array} courses
+ * @property {array} questions
+ * 
+ */
 const user = mongoose.Schema({
   username:{ type: String, required: true },
   password: { type: String, required: true },
