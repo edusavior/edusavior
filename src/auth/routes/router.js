@@ -6,6 +6,7 @@
  */
 
 const express = require('express');
+const superagent=require('superagent');
 
 const users = require('../models/users/user-model.js');
 const oauth = require('../middlewaare/oauth.js');
@@ -38,16 +39,38 @@ router.get('/linkedIn_oauth', linkedinOuth, (req, res) => {
 
 
 
-async function saveHandler (req,res){
-  try{
-    const user = await users.save(req.body);
-    const token = users.generateToken(user);
-    res.json({ token });
-  }catch(err){
-    console.error(err);
-    
-    res.status(403).send('user already exists');
+async function saveHandler (req,res,next){
+  const verfiy = req.body.email;
+  let url = `https://email-checker.p.rapidapi.com/verify/v1?email=${verfiy}`;
+  superagent.get(url)
+    .set('x-rapidapi-host','email-checker.p.rapidapi.com')
+    .set('x-rapidapi-key','38d26207a5msh5bff551ba95f8b8p1d6710jsn4fe4f49bd360')
+    .set('useQueryString','true')
+    .then(emailData => {
+      const emailSummaries = emailData.body.status;
+      if( emailSummaries === 'valid'){
+        savedEmail(req,res,next);
+      } else{
+        res.send('The mailbox doesn\'t exist.');
+      }
+    });
+  
+  
+  async function savedEmail(req,res,next){
+
+    try{
+      const user = await users.save(req.body);
+      const token = users.generateToken(user);
+      res.json({ token });
+      
+    }catch(err){
+      console.error(err);
+      next('server rrrs');
+      // res.status(403).send('user already exists');
+    }
   }
+
+ 
     
 }
 /**
