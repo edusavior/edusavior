@@ -46,6 +46,82 @@
         
             
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="auth_middlewaare_oauth.js.html">auth/middlewaare/oauth.js</a>, <a href="auth_middlewaare_oauth.js.html#line2">line 2</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
     
 
     
@@ -227,82 +303,6 @@
 
 
         
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="auth_middlewaare_oauth.js.html">auth/middlewaare/oauth.js</a>, <a href="auth_middlewaare_oauth.js.html#line2">line 2</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
     
     </div>
 
@@ -337,7 +337,8 @@
 
 
 <div class="description">
-    <p>exchangeCodeForToken function will get back the Token from Google</p>
+    <p>after the popup send the code to google for Token
+exchangeCodeForToken function will take this code then get back the Token from Google</p>
 </div>
 
 
@@ -430,7 +431,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="auth_middlewaare_oauth.js.html">auth/middlewaare/oauth.js</a>, <a href="auth_middlewaare_oauth.js.html#line53">line 53</a>
+        <a href="auth_middlewaare_oauth.js.html">auth/middlewaare/oauth.js</a>, <a href="auth_middlewaare_oauth.js.html#line54">line 54</a>
     </li></ul></dd>
     
 
@@ -496,7 +497,7 @@
 
 
 <div class="description">
-    <p>getRemoteUserInfo function will get the user obj from Google by sending the token from Google</p>
+    <p>getRemoteUserInfo function will get the remote user from Google by using the Token that came from Google</p>
 </div>
 
 
@@ -589,7 +590,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="auth_middlewaare_oauth.js.html">auth/middlewaare/oauth.js</a>, <a href="auth_middlewaare_oauth.js.html#line72">line 72</a>
+        <a href="auth_middlewaare_oauth.js.html">auth/middlewaare/oauth.js</a>, <a href="auth_middlewaare_oauth.js.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -748,7 +749,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="auth_middlewaare_oauth.js.html">auth/middlewaare/oauth.js</a>, <a href="auth_middlewaare_oauth.js.html#line86">line 86</a>
+        <a href="auth_middlewaare_oauth.js.html">auth/middlewaare/oauth.js</a>, <a href="auth_middlewaare_oauth.js.html#line88">line 88</a>
     </li></ul></dd>
     
 
@@ -816,13 +817,15 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-acl.html">acl</a></li><li><a href="module-basicAuthorization.html">basicAuthorization</a></li><li><a href="module-bearerTokenAuthorization.html">bearerTokenAuthorization</a></li><li><a href="module-courses.html">courses</a></li><li><a href="module-errorHandler.html">errorHandler</a></li><li><a href="module-GoogleOauth.html">GoogleOauth</a></li><li><a href="module-notFoundError.html">notFoundError</a></li><li><a href="module-questions.html">questions</a></li><li><a href="module-quizzes.html">quizzes</a></li><li><a href="module-server.html">server</a></li></ul><h3>Classes</h3><ul><li><a href="Model.html">Model</a></li><li><a href="Products.html">Products</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="global.html">basicAuthorization
+this is used for signin</a></li><li><a href="module-acl.html">acl</a></li><li><a href="module-bearerTokenAuthorization.html">bearerTokenAuthorization</a></li><li><a href="module-courses.html">courses</a></li><li><a href="module-errorHandler.html">errorHandler</a></li><li><a href="module-GoogleOauth.html">GoogleOauth</a></li><li><a href="module-notFoundError.html">notFoundError</a></li><li><a href="module-questions.html">questions</a></li><li><a href="module-quizzes.html">quizzes</a></li><li><a href="module-server.html">server</a></li><li><a href="module-userSchema.html">userSchema</a></li></ul><h3>Classes</h3><ul><li><a href="Model.html">Model</a></li><li><a href="Users.html">Users</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asyncauthenticateToken">async authenticateToken</a></li><li><a href="global.html#authenticateBasic">authenticateBasic</a></li><li><a href="global.html">basicAuthorization
+this is used for signinmodule:</a></li><li><a href="global.html#generateToken">generateToken</a></li><li><a href="global.html#save">save</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 22 2020 07:57:51 GMT+0300 (Eastern European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 22 2020 08:50:07 GMT+0300 (Eastern European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

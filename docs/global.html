@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: server.js</title>
+    <title>JSDoc: Module: basicAuthorization
+this is used for signin</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,60 +18,95 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: server.js</h1>
+    <h1 class="page-title">Module: basicAuthorization
+this is used for signin</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>'use strict';
-/**
- * Simple Server
- * Server module will start at the port 
- * @module server
- */
+</header>
 
-const express = require('express');
-const router = require('./edu-server/routes/router.js');
-const router_auth = require('./auth/routes/router.js');
-const morgan = require('morgan');
-const cors = require('cors');
-const app = express();
+<article>
+    <div class="container-overview">
+    
+        
+
+        
 
 
-const notFoundHandler = require('./middleware/404.js');
-const errorHandler = require('./middleware/500.js');
+<dl class="details">
 
-app.use(express.json());
-app.use(morgan('dev'));
-app.use(cors());
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="auth_middlewaare_basic.js.html">auth/middlewaare/basic.js</a>, <a href="auth_middlewaare_basic.js.html#line2">line 2</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
-app.use(express.static('./public'));
-app.use('/docs',express.static('./docs'));
+        
+    
+    </div>
 
-app.use('/', router_auth);
-app.use('/', router);
+    
 
+    
 
+    
 
-app.use('*', notFoundHandler);
-app.use(errorHandler);
+    
 
-module.exports = {
-  server: app,
-  start: (port) => {
-    const PORT = port || process.env.PORT || 3000;
+    
 
-    app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`),
-    );
-  },
-};</code></pre>
-        </article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
