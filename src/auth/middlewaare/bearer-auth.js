@@ -1,5 +1,15 @@
+'use strict';
+/**
+ *  @module bearerTokenAuthorization
+ * 
+ */
 const users = require('../models/users/user-model.js');
-
+/**
+ * this function will send a JSON Formatted Response
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ * @param {Function} next -middleware next()
+ */
 module.exports = (req, res, next) => {
   if (!req.headers.authorization) {
     next('Invalid Login no auth headers');

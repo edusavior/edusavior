@@ -1,4 +1,9 @@
 'use strict';
+/**
+ * oauth using google
+ *  @module Oauth
+ * 
+ */
 require('dotenv').config();
 const superagent = require('superagent');
 const users = require('../models/users/user-model.js');
@@ -10,7 +15,12 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
 const API_SERVER = process.env.API_SERVER;
-
+/**
+ * this function will send a JSON Formatted Response
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ * @param {Function} next -middleware next()
+ */
 module.exports = async (req, res, next) => {
   //2 & 3
   try {
@@ -34,6 +44,12 @@ module.exports = async (req, res, next) => {
     next(err.message);
   }
 };
+
+/**
+ * exchangeCodeForToken function will return access_token
+ * @param {string} code - input 
+ * @returns {string} access_token
+ */
 async function exchangeCodeForToken(code) {
   
   const tokenResponse = await superagent.post(tokenServerUrl).send({
