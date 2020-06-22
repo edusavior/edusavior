@@ -5,8 +5,9 @@
  */
 
 /**
- * this function will send a JSON Formatted Response
- * @param {Object} req - request 
+ *  expecting the bearerAuth middleware to add the user on the req
+ * check if this capability allowed to the user or not 
+ * @param {Object} req -  req.user 
  * @param {Object} res -response 
  * @param {Function} next -middleware next()
  */

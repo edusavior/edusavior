@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: auth/models/mongo.js</title>
+    <title>JSDoc: Source: auth/middlewaare/acl.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: auth/models/mongo.js</h1>
+    <h1 class="page-title">Source: auth/middlewaare/acl.js</h1>
 
     
 
@@ -27,71 +27,31 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
-
 /**
- * Generic mongo model : will be extended in other models
- * @class Model
- * @property {object} schema - mongo schema
- * @property {function}  get - get data
- * @property {function} create - post data to the database
- * @property {function} delete -delete data using id
- * @property {function} update - update data using id
+ *  @module acl
+ * 
  */
 
-
-class Model {
-
-  /** 
-    * Model Constructor 
-    * @parma {object} schema - mongo schema 
-  */
-  constructor(schema) {
-    this.schema = schema;
-  }
-  /**
-   * get one or all records
-   * @param {string} _id optional mongo record id
-   * @returns {array} the records
-   */
-
-  get(_id) {
-    const queryObject = _id ?  _id  : {};
-    return this.schema.find(queryObject);
-  }
-  /**
-   * Create a record
-   * @param  {object}  record
-   * 
-   */
-
-  create(record) {
-    const newRecord = new this.schema(record);
-    return newRecord.save();
-  }
-  
-  /**
-   * Update a record in the database
-   * @param {number} _id Record ID
-   * @param {object} record The new data to replace. ID is a required field
-   * @returns {object}
-   */
-  
-  update(_id, record) {
-    return this.schema.findByIdAndUpdate(_id, record, { new: true });
-  }
-
-  /**
-   * Deletes a recod in the model
-   * @param {string} _id  Mongo Record ID
-   */
-
-  delete(_id) {
-    return this.schema.findByIdAndDelete(_id);
-  }
-}
-
-module.exports = Model;
-</code></pre>
+/**
+ * this function will send a JSON Formatted Response
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ * @param {Function} next -middleware next()
+ */
+module.exports = (capability) => {
+  return (req, res, next) => {
+    try {
+      if (req.user.capabilities.includes(capability)) {
+        next();
+      } else {
+        res.json({error : 'Access Denied'});
+      }
+    } catch (e) {
+      next('Invalid Login');
+    }
+  };
+};
+    </code></pre>
         </article>
     </section>
 

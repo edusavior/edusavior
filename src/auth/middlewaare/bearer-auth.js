@@ -5,7 +5,8 @@
  */
 const users = require('../models/users/user-model.js');
 /**
- * this function will send a JSON Formatted Response
+ * this function will check  the validation of login 
+ * test if the header have an authorization then decode it and generate token
  * @param {Object} req - request 
  * @param {Object} res -response 
  * @param {Function} next -middleware next()

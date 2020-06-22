@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: questions</title>
+    <title>JSDoc: Module: notFoundError</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: questions</h1>
+    <h1 class="page-title">Module: notFoundError</h1>
 
     
 
@@ -29,8 +29,6 @@
 <header>
     
         
-            
-        
     
 </header>
 
@@ -38,84 +36,6 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>schema for questions</p></div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="edu-server_models_q_and_answer_questions-schema.js.html">edu-server/models/q_and_answer/questions-schema.js</a>, <a href="edu-server_models_q_and_answer_questions-schema.js.html#line3">line 3</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         
     
@@ -134,26 +54,39 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
-<h4 class="name" id="~mongoose"><span class="type-signature">(inner, constant) </span>mongoose<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
 
     
 
-<table class="props">
+    
+    <h4 class="name" id="~notFoundHandler"><span class="type-signature">(inner) </span>notFoundHandler<span class="signature">(req, res, next)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>this function will send a JSON Formatted 404 Response</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
     <thead>
     <tr>
         
@@ -175,13 +108,13 @@
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>req</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
@@ -191,20 +124,20 @@
 
             
 
-            <td class="description last"><p>required</p></td>
+            <td class="description last"><p>request</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>display_name</code></td>
+                <td class="name"><code>res</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
@@ -214,20 +147,20 @@
 
             
 
-            <td class="description last"><p>required</p></td>
+            <td class="description last"><p>response</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>description</code></td>
+                <td class="name"><code>next</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">function</span>
 
 
             
@@ -237,12 +170,14 @@
 
             
 
-            <td class="description last"><p>required</p></td>
+            <td class="description last"><p>middleware next()</p></td>
         </tr>
 
     
     </tbody>
 </table>
+
+
 
 
 
@@ -276,7 +211,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="edu-server_models_q_and_answer_questions-schema.js.html">edu-server/models/q_and_answer/questions-schema.js</a>, <a href="edu-server_models_q_and_answer_questions-schema.js.html#line14">line 14</a>
+        <a href="middleware_404.js.html">middleware/404.js</a>, <a href="middleware_404.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -292,9 +227,21 @@
 
 
 
-        
-    
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     

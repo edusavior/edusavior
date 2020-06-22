@@ -1,13 +1,14 @@
 'use strict';
 /**
  *  @module basicAuthorization
+ * this is used for signin
  * 
  */
 
 const base64 = require('base-64');
 const users = require('../models/users/user-model.js');
 /**
- * this function will send a JSON Formatted Response
+ * check if the client sent authorization headers then decode it and generate token
  * @param {Object} req - request 
  * @param {Object} res -response 
  * @param {Function} next -middleware next()

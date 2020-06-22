@@ -15,7 +15,7 @@ class Model {
 
   /** 
     * Model Constructor 
-    * @parma {object} schema - mongo schema 
+    * @param {object} schema - mongo schema 
   */
   constructor(schema) {
     this.schema = schema;
