@@ -8,6 +8,7 @@ const express = require('express');
 const users = require('../../auth/models/users/user-model.js');
 const router = express.Router();
 const courses = require('../models/couses/courses-model.js');
+const quiz_model = require('../models/quiz/quiz-model.js');
 // const question = require('../models/q_and_answer/questions-model.js');
 const bearerAuth = require('../../auth/middlewaare/bearer-auth.js');
 const acl = require('../../auth/middlewaare/acl.js');
@@ -24,8 +25,10 @@ router.post('/addCoursetodashboard', bearerAuth , addCoursetodashboardHandler);
 router.get('/getCoursetodashboard', bearerAuth , getCoursetodashboardHandler);
 router.get('/getuserinfo', bearerAuth , getuserinfoHandler);
 router.put('/updateuserinfo/:id' ,bearerAuth , updateUserInfoHandler);
+router.post('/questions', bearerAuth, acl('addQuiz') ,questionsHandler);
 
 //routes handlers
+
 /**
    * for /allCourses
    * function to get all the courses from the data base
@@ -34,6 +37,7 @@ router.put('/updateuserinfo/:id' ,bearerAuth , updateUserInfoHandler);
  * @param {Object} res -response 
  */
 async function allCoursesHandler(req,res){
+
   const allCourses = await  courses.get();
   res.json({allCourses});
 }
@@ -127,5 +131,39 @@ async function updateUserInfoHandler(req,res){
   const updatedUser = await users.update(req.params.id , req.body);
   res.json(updatedUser);
 }
+
+async function questionsHandler (req,res){
+  try {
+    let obj = {
+      description: req.body.description,
+      alternatives: [
+        {
+          text: req.body.a1,
+        },
+        {
+          text: req.body.a2,
+        },
+        {
+          text: req.body.a3,
+        },
+        {
+          text: req.body.a4,
+        },
+      ],
+    };
+    obj.alternatives.forEach((val,idx) => {
+      if(req.body.correctAnswer == idx +1){
+        val.isCorrect = true;
+      }
+    });
+    const question = await quiz_model.create(
+      obj,
+    );
+    return res.status(201).json(question);
+  }catch (error) {
+    return res.status(500).json({'error':error});
+  }
+}
+
 
 module.exports = router;

@@ -1,12 +1,8 @@
-'use strict';
-
-const quizzesSchema = require('./quiz-schema');
-const mongoCourses = require('../mongo');
-
-class Quizzes extends mongoCourses {
-  constructor() {
-    super(quizzesSchema);
+const quiz_schema = require('./quiz-schema.js');
+const Model = require('../../../auth/models/mongo.js');
+class Questions extends Model {
+  constructor(quiz_schema) {
+    super(quiz_schema);
   }
 }
-
-module.exports = new Quizzes(quizzesSchema);
+module.exports = new Questions(quiz_schema);
