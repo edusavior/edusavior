@@ -63,7 +63,9 @@ edu.on('connect', () => {
     name = input.name;
     console.log('input.name', input.name);
     let username = await userSchema.findTheUser(name);
-    // let username = await userSchema.find({ username: name });
+    if (!username) {
+      return;
+    }
     console.log('username', username);
 
     console.log('anythings');
