@@ -68,8 +68,6 @@ edu.on('connect', () => {
     }
     console.log('username', username);
 
-    console.log('anythings');
-
     activeInput = false;
     getInput();
   }
