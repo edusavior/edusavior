@@ -19,7 +19,7 @@
   - finally, there are alots of information about the flow and the functionality for our website in our UML and Wireframe.
 
 ## File system
-[tree](./assest/filesystem.png)
+![](./assest/filesystem.png)
 
 ## Geting started
 
@@ -52,7 +52,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Schema 
 
-[schema](./assest/UntitledDiagram.png)
+![](./assest/UntitledDiagram.png)
 
 ### User Schema
 
@@ -100,7 +100,7 @@ npm run jest
 npm test
 
 ## UML 
-[uml](./assest/Untitled(3).png)
+![](./assest/Untitled(3).png)
 
 
 ## Wireframe & User Stories
