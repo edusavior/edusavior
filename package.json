@@ -2,9 +2,9 @@
   "name": "edusavior",
   "version": "1.0.0",
   "description": "## Team Member :   - 1. Hammad ali   - 2. Osama Mousa    - 3. Reham Al-Sobh   - 4. Amal Almomani",
-  "main": "index-amal.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node index-amal.js",
+    "start": "node index.js",
     "test": "jest --coverage --verbose",
     "lint": "eslint '**/*.js'",
     "doc":"jsdoc -c jsdoc.json"
