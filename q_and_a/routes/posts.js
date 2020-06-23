@@ -74,4 +74,19 @@ router.get('/:postId/comment', async (req, res) => {
   res.send(post);
 });
 
+// Edit a comment
+router.put('/comment/:commentId', async (req, res) => {
+  const comment = await Comment.findByIdAndUpdate({
+    _id: req.params.commentId,
+  }, req.body,
+    { new: true, runValidators: true },
+  );
+  res.send(comment);
+});
+
+// delete a comment
+router.delete('/comment/:commentId', async (req, res) => {
+  await Comment.findByIdAndUpdate(req.params.commentId);
+});
+
 module.exports = router;
