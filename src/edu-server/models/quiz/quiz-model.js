@@ -1,7 +1,7 @@
 const quiz_schema = require('./quiz-schema.js');
-const Model = require('../mongo.js');
+const Model = require('../../../auth/models/mongo.js');
 class Questions extends Model {
-  constructor() {
+  constructor(quiz_schema) {
     super(quiz_schema);
   }
 }
