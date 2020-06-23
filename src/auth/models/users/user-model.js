@@ -41,8 +41,6 @@ class Users extends Model {
     if(result.length == 0){
       const user = await this.create(record);
       return user;
-    }else{
-      return result;
     }
     
   }
