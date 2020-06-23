@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 const io = require('socket.io-client');
 const edu = io.connect('http://localhost:3000/edu');
 
-const userSchema = require('../../src/auth/models/users/user-model');
+// const userSchema = require('../../src/auth/models/users/user-model');
 
 edu.on('connect', () => {
   const messages = [];
@@ -55,23 +55,31 @@ edu.on('connect', () => {
         break;
     }
   }
-  async function getName() {
-    console.clear();
-    const input = await inquirer.prompt([
-      { name: 'name', message: 'write your username' },
-    ]);
-    name = input.name;
-    console.log('input.name', input.name);
-    let username = await userSchema.findTheUser(name);
-    if (!username) {
-      return;
-    }
-    console.log('username', username);
+  // async function getName() {
+  //   console.clear();
+  //   const input = await inquirer.prompt([
+  //     { name: 'name', message: 'write your username' },
+  //   ]);
+  //   name = input.name;
+  //   console.log('input.name', input.name);
+  //   let username = await userSchema.findTheUser(name);
+  //   if (!username) {
+  //     return;
+  //   }
+  //   console.log('username', username);
 
-    activeInput = false;
-    getInput();
-  }
-  getName();
+  //   activeInput = false;
+  //   getInput();
+  // }
+  // getName();
+  async function getName() { 
+       console.clear();
+       const input = await inquirer.prompt([ 
+      { name: 'name', message: 'What is your name?' }, 
+      ]); 
+      name = input.name;  
+      activeInput = false; 
+     getInput();  }  getName();
 
 
 

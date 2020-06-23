@@ -31,14 +31,8 @@ router.post('/questions', bearerAuth, acl('addQuiz'), questionsHandler);
 
 //routes handlers
 
-<<<<<<< HEAD
-async function allCoursesHandler(req, res) {
-  const allCourses = await courses.get();
-  res.json({ allCourses });
-}
 
-async function addCourseHandler(req, res) {
-=======
+
 /**
    * for /allCourses
    * function to get all the courses from the data base
@@ -50,6 +44,7 @@ async function allCoursesHandler(req,res){
 
   const allCourses = await  courses.get();
   res.json({allCourses});
+
 }
 /**
    * for /addCourse
@@ -59,7 +54,8 @@ async function allCoursesHandler(req,res){
  * @param {Object} res -response 
  */
 async function addCourseHandler(req,res){
->>>>>>> 55e2a6a3cd45141972691122fe3448cdf028db81
+
+
   try {
     const data = await courses.create(req.body);
     res.json(data);
@@ -67,10 +63,7 @@ async function addCourseHandler(req,res){
     console.error(error);
   }
 }
-<<<<<<< HEAD
 
-async function addCoursetodashboardHandler(req, res) {
-=======
 /**
    * for /addCoursetodashboard
    * function to add course to the dashboard 
@@ -79,7 +72,7 @@ async function addCoursetodashboardHandler(req, res) {
  * @param {Object} res -response 
  */
 async function addCoursetodashboardHandler(req,res){
->>>>>>> 55e2a6a3cd45141972691122fe3448cdf028db81
+
   try {
     const user = await users.get({ username: req.user.username });
     user[0].courses.push(req.body);
@@ -89,10 +82,7 @@ async function addCoursetodashboardHandler(req,res){
     console.error(error);
   }
 }
-<<<<<<< HEAD
 
-async function getuserinfoHandler(req, res) {
-=======
 /**
    * for /getuserinfo
    * function to show the user information in profile page
@@ -101,7 +91,9 @@ async function getuserinfoHandler(req, res) {
  * @param {Object} res -response 
  */
 async function getuserinfoHandler(req,res){
->>>>>>> 55e2a6a3cd45141972691122fe3448cdf028db81
+
+
+
   try {
     const user = await users.get({ username: req.user.username });
     res.json({ user });
@@ -110,10 +102,7 @@ async function getuserinfoHandler(req,res){
   }
 }
 
-<<<<<<< HEAD
 
-async function getCoursetodashboardHandler(req, res) {
-=======
 /**
    * for /getCoursetodashboard
    * function to get all the user  courses and show it in his/here dashboard
@@ -122,7 +111,8 @@ async function getCoursetodashboardHandler(req, res) {
  * @param {Object} res -response 
  */
 async function getCoursetodashboardHandler(req,res){
->>>>>>> 55e2a6a3cd45141972691122fe3448cdf028db81
+
+
   try {
     const user = await users.get({ username: req.user.username });
     const courses = user[0].courses;
@@ -131,10 +121,7 @@ async function getCoursetodashboardHandler(req,res){
     console.error(error);
   }
 }
-<<<<<<< HEAD
 
-async function getCoursesHandler(req, res) {
-=======
 /**
  * for /course/:subject
  * function to get all the courses based on the subject
@@ -143,7 +130,9 @@ async function getCoursesHandler(req, res) {
  * @param {Object} res -response 
  */
 async function getCoursesHandler(req,res){
->>>>>>> 55e2a6a3cd45141972691122fe3448cdf028db81
+
+
+
   try {
     const course = await courses.get({ subject: req.params.subject });
     res.json({ course });
@@ -151,11 +140,7 @@ async function getCoursesHandler(req,res){
     console.error(error);
   }
 }
-<<<<<<< HEAD
 
-async function updateUserInfoHandler(req, res) {
-  const updatedUser = await users.update(req.params.id, req.body);
-=======
 /**
    * for /updateuserinfo/:id
    * function to update user information
@@ -165,7 +150,8 @@ async function updateUserInfoHandler(req, res) {
  */
 async function updateUserInfoHandler(req,res){
   const updatedUser = await users.update(req.params.id , req.body);
->>>>>>> 55e2a6a3cd45141972691122fe3448cdf028db81
+
+
   res.json(updatedUser);
 }
 

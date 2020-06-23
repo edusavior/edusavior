@@ -86,6 +86,8 @@ async function getRemoteUserInfo(token) {
  * @returns {string} user and token
  */
 async function getUser(remoteUser) {
+  console.log('remoteUser' , remoteUser);
+  
   const userRecord = {
     username: remoteUser.name,
     password: 'Rehaaaam',

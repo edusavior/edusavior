@@ -29,32 +29,63 @@ router.get('/oauth', oauth, oauthentication);
  */
 
 
-<<<<<<< HEAD
-async function saveHandler(req, res) {
-  try {
-    const user = await users.save(req.body);
-    const token = users.generateToken(user);
-    res.json({ token });
-  } catch (err) {
-    console.error(err);
 
-    res.status(403).send('user already exists');
+
+router.get('/linkedIn_oauth', linkedinOuth, (req, res) => {
+  res.json({ token: req.token  , user:req.user});
+});
+
+
+
+
+
+
+async function saveHandler (req,res,next){
+  const verfiy = req.body.email;
+  let url = `https://email-checker.p.rapidapi.com/verify/v1?email=${verfiy}`;
+  superagent.get(url)
+    .set('x-rapidapi-host','email-checker.p.rapidapi.com')
+    .set('x-rapidapi-key','38d26207a5msh5bff551ba95f8b8p1d6710jsn4fe4f49bd360')
+    .set('useQueryString','true')
+    .then(emailData => {
+      const emailSummaries = emailData.body.status;
+      if( emailSummaries === 'valid'){
+        savedEmail(req,res,next);
+      } else{
+        res.send('The mailbox doesn\'t exist.');
+      }
+    });
+  
+  
+  async function savedEmail(req,res,next){
+
+    try{
+      const user = await users.save(req.body);
+      const token = users.generateToken(user);
+      res.json({ token });
+      
+    }catch(err){
+      console.error(err);
+      next('server rrrs');
+      // res.status(403).send('user already exists');
+    }
   }
 
+ 
+    
+}
+/**
+ * for /signin
+   *  basicAuth will add token to the req
+ * @method signinHandler
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ */
+function signinHandler (req, res)  {
+  res.json({ token: req.token , user: req.user });
 }
 
-// function findTheUser (username) {
-//   return this.find({ username });
-// };
 
-
-function signinHandler(req, res) {
-  res.json({ token: req.token, user: req.user });
-  // console.log('res.user', req.user.username);
-}
-
-function oauthentication(req, res) {
-=======
 
 router.get('/linkedIn_oauth', linkedinOuth, (req, res) => {
   res.json({ token: req.token  , user:req.user});
@@ -118,7 +149,7 @@ function signinHandler (req, res)  {
  * @param {Object} res -response 
  */
 function oauthentication(req,res){
->>>>>>> 55e2a6a3cd45141972691122fe3448cdf028db81
+
 
   res.json({ token: req.token, user: req.user });
 
