@@ -32,6 +32,7 @@ router.post('/questions', bearerAuth, acl('addQuiz'), questionsHandler);
 //routes handlers
 
 
+
 /**
    * for /allCourses
    * function to get all the courses from the data base
@@ -43,6 +44,7 @@ async function allCoursesHandler(req,res){
 
   const allCourses = await  courses.get();
   res.json({allCourses});
+
 }
 /**
    * for /addCourse
@@ -52,6 +54,7 @@ async function allCoursesHandler(req,res){
  * @param {Object} res -response 
  */
 async function addCourseHandler(req,res){
+
 
   try {
     const data = await courses.create(req.body);
@@ -89,6 +92,8 @@ async function addCoursetodashboardHandler(req,res){
  */
 async function getuserinfoHandler(req,res){
 
+
+
   try {
     const user = await users.get({ username: req.user.username });
     res.json({ user });
@@ -106,6 +111,7 @@ async function getuserinfoHandler(req,res){
  * @param {Object} res -response 
  */
 async function getCoursetodashboardHandler(req,res){
+
 
   try {
     const user = await users.get({ username: req.user.username });
@@ -125,6 +131,8 @@ async function getCoursetodashboardHandler(req,res){
  */
 async function getCoursesHandler(req,res){
 
+
+
   try {
     const course = await courses.get({ subject: req.params.subject });
     res.json({ course });
@@ -142,6 +150,7 @@ async function getCoursesHandler(req,res){
  */
 async function updateUserInfoHandler(req,res){
   const updatedUser = await users.update(req.params.id , req.body);
+
 
   res.json(updatedUser);
 }
