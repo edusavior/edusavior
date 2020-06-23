@@ -1,24 +1,28 @@
 'use strict';
 
 /**
-* module Model
-* @module Model
-*/
-
-/**
-* Model Constructor
-* @param {object} schema
-*/
-
+ * Generic mongo model : will be extended in other models
+ * @class Model
+ * @property {object} schema - mongo schema
+ * @property {function}  get - get data
+ * @property {function} create - post data to the database
+ * @property {function} delete -delete data using id
+ * @property {function} update - update data using id
+ */
 
 
 class Model {
+
+  /** 
+    * Model Constructor 
+    * @param {object} schema - mongo schema 
+  */
   constructor(schema) {
     this.schema = schema;
   }
   /**
    * get one or all records
-   * @param {number} _id 
+   * @param {string} _id optional mongo record id
    * @returns {array} the records
    */
 
@@ -29,6 +33,7 @@ class Model {
   /**
    * Create a record
    * @param  {object}  record
+   * 
    */
 
   create(record) {
@@ -49,7 +54,7 @@ class Model {
 
   /**
    * Deletes a recod in the model
-   * @param id {string} Mongo Record ID
+   * @param {string} _id  Mongo Record ID
    */
 
   delete(_id) {

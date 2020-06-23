@@ -1,4 +1,9 @@
 'use strict';
+/**
+ * in this module you will find all the routes for our project
+ *  @module router
+ * 
+ */
 const express = require('express');
 const users = require('../../auth/models/users/user-model.js');
 const router = express.Router();
@@ -26,12 +31,28 @@ router.post('/questions', bearerAuth, acl('addQuiz'), questionsHandler);
 
 //routes handlers
 
-async function allCoursesHandler(req, res) {
-  const allCourses = await courses.get();
-  res.json({ allCourses });
-}
 
-async function addCourseHandler(req, res) {
+/**
+   * for /allCourses
+   * function to get all the courses from the data base
+ * @method allCoursesHandler
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ */
+async function allCoursesHandler(req,res){
+
+  const allCourses = await  courses.get();
+  res.json({allCourses});
+}
+/**
+   * for /addCourse
+   * function to add course if the role is instructor
+ * @method allCoursesHandler
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ */
+async function addCourseHandler(req,res){
+
   try {
     const data = await courses.create(req.body);
     res.json(data);
@@ -40,7 +61,15 @@ async function addCourseHandler(req, res) {
   }
 }
 
-async function addCoursetodashboardHandler(req, res) {
+/**
+   * for /addCoursetodashboard
+   * function to add course to the dashboard 
+ * @method addCoursetodashboardHandler
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ */
+async function addCoursetodashboardHandler(req,res){
+
   try {
     const user = await users.get({ username: req.user.username });
     user[0].courses.push(req.body);
@@ -51,7 +80,15 @@ async function addCoursetodashboardHandler(req, res) {
   }
 }
 
-async function getuserinfoHandler(req, res) {
+/**
+   * for /getuserinfo
+   * function to show the user information in profile page
+ * @method getuserinfoHandler
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ */
+async function getuserinfoHandler(req,res){
+
   try {
     const user = await users.get({ username: req.user.username });
     res.json({ user });
@@ -61,7 +98,15 @@ async function getuserinfoHandler(req, res) {
 }
 
 
-async function getCoursetodashboardHandler(req, res) {
+/**
+   * for /getCoursetodashboard
+   * function to get all the user  courses and show it in his/here dashboard
+ * @method getCoursetodashboardHandler
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ */
+async function getCoursetodashboardHandler(req,res){
+
   try {
     const user = await users.get({ username: req.user.username });
     const courses = user[0].courses;
@@ -71,7 +116,15 @@ async function getCoursetodashboardHandler(req, res) {
   }
 }
 
-async function getCoursesHandler(req, res) {
+/**
+ * for /course/:subject
+ * function to get all the courses based on the subject
+ * @method getCoursesHandler
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ */
+async function getCoursesHandler(req,res){
+
   try {
     const course = await courses.get({ subject: req.params.subject });
     res.json({ course });
@@ -80,8 +133,16 @@ async function getCoursesHandler(req, res) {
   }
 }
 
-async function updateUserInfoHandler(req, res) {
-  const updatedUser = await users.update(req.params.id, req.body);
+/**
+   * for /updateuserinfo/:id
+   * function to update user information
+ * @method updateUserInfoHandler
+ * @param {Object} req - request 
+ * @param {Object} res -response 
+ */
+async function updateUserInfoHandler(req,res){
+  const updatedUser = await users.update(req.params.id , req.body);
+
   res.json(updatedUser);
 }
 
