@@ -16,8 +16,8 @@ const router = express.Router();
 const linkedinOuth = require('../middlewaare/linkedIn-oauth.js');
 router.post('/signup', saveHandler);
 
-router.post('/signin', basicAuth , signinHandler);
-router.get('/oauth', oauth,oauthentication);
+router.post('/signin', basicAuth, signinHandler);
+router.get('/oauth', oauth, oauthentication);
 
 
 /**
@@ -27,6 +27,7 @@ router.get('/oauth', oauth,oauthentication);
  * @param {Object} req - request 
  * @param {Object} res -response 
  */
+
 
 
 
@@ -93,7 +94,8 @@ function signinHandler (req, res)  {
  */
 function oauthentication(req,res){
 
-  res.json({ token: req.token  , user:req.user});
+
+  res.json({ token: req.token, user: req.user });
 
 }
 module.exports = router;

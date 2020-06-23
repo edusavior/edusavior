@@ -18,16 +18,19 @@ const acl = require('../../auth/middlewaare/acl.js');
 
 //routes
 
-router.get('/allCourses', bearerAuth ,allCoursesHandler);
-router.get('/course/:subject', bearerAuth ,getCoursesHandler);
-router.post('/addCourse', bearerAuth, acl('addcourse'),addCourseHandler);
-router.post('/addCoursetodashboard', bearerAuth , addCoursetodashboardHandler);
-router.get('/getCoursetodashboard', bearerAuth , getCoursetodashboardHandler);
-router.get('/getuserinfo', bearerAuth , getuserinfoHandler);
-router.put('/updateuserinfo/:id' ,bearerAuth , updateUserInfoHandler);
-router.post('/questions', bearerAuth, acl('addQuiz') ,questionsHandler);
+router.get('/allCourses', bearerAuth, allCoursesHandler);
+router.get('/course/:subject', bearerAuth, getCoursesHandler);
+router.post('/addCourse', bearerAuth, acl('addcourse'), addCourseHandler);
+router.post('/addCoursetodashboard', bearerAuth, addCoursetodashboardHandler);
+router.get('/getCoursetodashboard', bearerAuth, getCoursetodashboardHandler);
+router.get('/getuserinfo', bearerAuth, getuserinfoHandler);
+router.put('/updateuserinfo/:id', bearerAuth, updateUserInfoHandler);
+router.post('/questions', bearerAuth, acl('addQuiz'), questionsHandler);
+// router.post('/find', bearerAuth, chatValidation);
+
 
 //routes handlers
+
 
 /**
    * for /allCourses
@@ -49,6 +52,7 @@ async function allCoursesHandler(req,res){
  * @param {Object} res -response 
  */
 async function addCourseHandler(req,res){
+
   try {
     const data = await courses.create(req.body);
     res.json(data);
@@ -56,6 +60,7 @@ async function addCourseHandler(req,res){
     console.error(error);
   }
 }
+
 /**
    * for /addCoursetodashboard
    * function to add course to the dashboard 
@@ -64,15 +69,17 @@ async function addCourseHandler(req,res){
  * @param {Object} res -response 
  */
 async function addCoursetodashboardHandler(req,res){
+
   try {
-    const user = await  users.get({username : req.user.username});
+    const user = await users.get({ username: req.user.username });
     user[0].courses.push(req.body);
-    const data = await users.update(user[0]._id,user[0]);    
+    const data = await users.update(user[0]._id, user[0]);
     res.json(data);
   } catch (error) {
     console.error(error);
   }
 }
+
 /**
    * for /getuserinfo
    * function to show the user information in profile page
@@ -81,13 +88,15 @@ async function addCoursetodashboardHandler(req,res){
  * @param {Object} res -response 
  */
 async function getuserinfoHandler(req,res){
+
   try {
-    const user = await  users.get({username : req.user.username});
-    res.json({user});
+    const user = await users.get({ username: req.user.username });
+    res.json({ user });
   } catch (error) {
     console.error(error);
   }
 }
+
 
 /**
    * for /getCoursetodashboard
@@ -97,14 +106,16 @@ async function getuserinfoHandler(req,res){
  * @param {Object} res -response 
  */
 async function getCoursetodashboardHandler(req,res){
+
   try {
-    const user = await  users.get({username : req.user.username});
+    const user = await users.get({ username: req.user.username });
     const courses = user[0].courses;
-    res.json({courses});
+    res.json({ courses });
   } catch (error) {
     console.error(error);
   }
 }
+
 /**
  * for /course/:subject
  * function to get all the courses based on the subject
@@ -113,13 +124,15 @@ async function getCoursetodashboardHandler(req,res){
  * @param {Object} res -response 
  */
 async function getCoursesHandler(req,res){
+
   try {
-    const course = await  courses.get({subject : req.params.subject});
-    res.json({course});
+    const course = await courses.get({ subject: req.params.subject });
+    res.json({ course });
   } catch (error) {
     console.error(error);
-  }   
+  }
 }
+
 /**
    * for /updateuserinfo/:id
    * function to update user information
@@ -129,10 +142,11 @@ async function getCoursesHandler(req,res){
  */
 async function updateUserInfoHandler(req,res){
   const updatedUser = await users.update(req.params.id , req.body);
+
   res.json(updatedUser);
 }
 
-async function questionsHandler (req,res){
+async function questionsHandler(req, res) {
   try {
     let obj = {
       description: req.body.description,
@@ -151,8 +165,8 @@ async function questionsHandler (req,res){
         },
       ],
     };
-    obj.alternatives.forEach((val,idx) => {
-      if(req.body.correctAnswer == idx +1){
+    obj.alternatives.forEach((val, idx) => {
+      if (req.body.correctAnswer == idx + 1) {
         val.isCorrect = true;
       }
     });
@@ -160,9 +174,25 @@ async function questionsHandler (req,res){
       obj,
     );
     return res.status(201).json(question);
-  }catch (error) {
-    return res.status(500).json({'error':error});
+  } catch (error) {
+    return res.status(500).json({ 'error': error });
   }
+
+
+
+
+  // async function chatValidation(req, res) {
+  //   try {
+  //     let findUser = mainSchema.generateToken(req.data.username);
+  //     console.log('user', req.data.username);
+  //     res.status(200).json({ 'user': findUser });
+
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
+
 }
 
 
