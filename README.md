@@ -171,11 +171,11 @@ The courses schema holds the following information:
 * sending
     - *headers*: 
         - bearer Auth 
-       ```
-    {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
-    }
-    ```
+        ```
+        {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
+        }
+        ```
     
 
 * response
@@ -213,11 +213,11 @@ The courses schema holds the following information:
 
     - *headers*: 
         - bearer Auth 
-                ```
-    {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
-    }
-    ```
+         ```
+        {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
+        }
+        ```
             
 * response
   - subject : html
@@ -253,11 +253,11 @@ The courses schema holds the following information:
         ```
     - *headers*: 
         - bearer Auth 
-                 ```
-    {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
-    }
-    ```
+        ```
+        {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
+        }
+        ```
            
 
 * response
@@ -277,24 +277,24 @@ The courses schema holds the following information:
 #### POST /addCoursetodashboard
 * sending
    - *body* :
-   ```
-        {
-           "course_name":"html",
-        "subject":"html",
-        "instructor":"Reham",
-        "description" :"teach from tha basic up to heigh level ",
-        "literature_time" : "9-11 am",
-        "quiz" : []
-        }
-        ``` 
+        ```
+                {
+                "course_name":"html",
+                "subject":"html",
+                "instructor":"Reham",
+                "description" :"teach from tha basic up to heigh level ",
+                "literature_time" : "9-11 am",
+                "quiz" : []
+                }
+                ``` 
         
     - *headers*: 
         - bearer Auth 
-                 ```
-    {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
-    }
-    ```
+        ```
+        {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
+        }
+        ```
 * response
     ```
             {"role": "instructor",
@@ -323,11 +323,11 @@ The courses schema holds the following information:
  
     - *headers*: 
         - bearer Auth 
-                ```
-    {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
-    }
-    ```
+        ```
+        {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
+        }
+        ```
                 
            
 
@@ -351,22 +351,22 @@ The courses schema holds the following information:
 
 * sending
    - *body* : 
-        ```
-            {
-                "username":"Reham Omar AL-Sobh",
-            "password":"9",
-            "role":"instructor",
-            "email":"rehamalsobh96@gmail.com"
-            }
-            ``` 
+            ```
+                {
+                    "username":"Reham Omar AL-Sobh",
+                "password":"9",
+                "role":"instructor",
+                "email":"rehamalsobh96@gmail.com"
+                }
+                ``` 
        
     - *headers*: 
         - bearer Auth 
-                ```
-    {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
-    }
-    ```
+        ```
+        {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
+        }
+        ```
                 
            
 
