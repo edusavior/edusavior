@@ -121,41 +121,41 @@ Creates a new user profile and returns a unique token that the user must then pa
   - http://localhost:3000/
   * Response
 
-            ```
-        {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0gQUwtU29iaCIsInJvbGUiOiJzdHVkZW50IiwiY2FwYWJpbGl0aWVzIjpbInJlYWQiXSwiaWF0IjoxNTkyOTg0NjEzfQ.17CBvzfIH4L3pRUmXRzSW2o76-EUCpXWZdPIOL8kOl4",
-    "user": {
-    "role": "student",
-    "courses": [],
-    "questions": [],
-    "_id": "5ef30425ae988c077bc340fd",
-    "username": "Reham AL-Sobh",
-    "password": "$2a$05$zwmBvcE6Jum/yo9ZgvHABeY8Vi2AdIg/rcgLq8ql8j.JyckR5HndK",
-    "email": "rehamalsobh96@gmail.com",
-    "__v": 0
-    }
+                ```
+            {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0gQUwtU29iaCIsInJvbGUiOiJzdHVkZW50IiwiY2FwYWJpbGl0aWVzIjpbInJlYWQiXSwiaWF0IjoxNTkyOTg0NjEzfQ.17CBvzfIH4L3pRUmXRzSW2o76-EUCpXWZdPIOL8kOl4",
+        "user": {
+        "role": "student",
+        "courses": [],
+        "questions": [],
+        "_id": "5ef30425ae988c077bc340fd",
+        "username": "Reham AL-Sobh",
+        "password": "$2a$05$zwmBvcE6Jum/yo9ZgvHABeY8Vi2AdIg/rcgLq8ql8j.JyckR5HndK",
+        "email": "rehamalsobh96@gmail.com",
+        "__v": 0
         }
-    ```
+            }
+        ```
 
 **linkedIn**
   - http://localhost:3000/
   * Response
 
-    ```
-    {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0gQUwtU29iaCIsInJvbGUiOiJzdHVkZW50IiwiY2FwYWJpbGl0aWVzIjpbInJlYWQiXSwiaWF0IjoxNTkyOTg1NTcwfQ.yKrwUzMbgS8yy6fg5CQhw5w3T1fJiMiLOIPfe4K20Qw",
-"user": {
-"role": "student",
-"courses": [],
-"questions": [],
-"_id": "5ef307e242c2c50a6433da38",
-"username": "Reham AL-Sobh",
-"password": "$2a$05$b.NljSfihQc.uEses31mkuu/2xjO6rtJx6xPw2ZA3Q.hmOwahNQm2",
-"email": "email@gmail.com",
-"__v": 0
-}
+        ```
+        {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0gQUwtU29iaCIsInJvbGUiOiJzdHVkZW50IiwiY2FwYWJpbGl0aWVzIjpbInJlYWQiXSwiaWF0IjoxNTkyOTg1NTcwfQ.yKrwUzMbgS8yy6fg5CQhw5w3T1fJiMiLOIPfe4K20Qw",
+    "user": {
+    "role": "student",
+    "courses": [],
+    "questions": [],
+    "_id": "5ef307e242c2c50a6433da38",
+    "username": "Reham AL-Sobh",
+    "password": "$2a$05$b.NljSfihQc.uEses31mkuu/2xjO6rtJx6xPw2ZA3Q.hmOwahNQm2",
+    "email": "email@gmail.com",
+    "__v": 0
     }
-    ```
+        }
+        ```
   
 ### Courses Schema
 
