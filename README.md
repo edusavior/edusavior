@@ -256,9 +256,9 @@ The courses schema holds the following information:
            
 
 * response
-      ```
+  ```
         {
-                "quiz": [],
+           "quiz": [],
                 "_id": "5ef30b9b42c2c50a6433da3a",
                 "course_name": "html",
                 "subject": "html",
@@ -268,7 +268,7 @@ The courses schema holds the following information:
                 "__v": 0
         }
         ```
-  
+       
 #### POST /addCoursetodashboard
 * sending
    - *body* : 
