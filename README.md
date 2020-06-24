@@ -285,44 +285,42 @@ The courses schema holds the following information:
         
     - *headers*: 
         - bearer Auth 
-                {
-                token :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo
-                } 
+                 {
+                token : ` eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
+                }
 
 * response
-            ```
-            {
-            "role": "instructor",
-            "courses": [
-                {
-                    "course_name": "html",
-                    "subject": "html",
-                    "instructor": "Reham",
-                    "description": "teach from tha basic up to heigh level ",
-                    "literature_time": "9-11 am",
-                    "quiz": []
-                }
-            ],
-            "questions": [],
-            "_id": "5ef308be42c2c50a6433da39",
-            "username": "Reham",
-            "password": "$2a$05$vuLosH5xYWnmwKCx4DfvX.uJ.ICvTiubBXsrGYWEW0xSVA581NY36",
-            "email": "rehamalsobh96@gmail.com",
-            "__v": 0
+    ```
+            {"role": "instructor",
+                "courses": [
+                    {
+                        "course_name": "html",
+                        "subject": "html",
+                        "instructor": "Reham",
+                        "description": "teach from tha basic up to heigh level ",
+                        "literature_time": "9-11 am",
+                        "quiz": []
+                    }
+                ],
+                "questions": [],
+                "_id": "5ef308be42c2c50a6433da39",
+                "username": "Reham",
+                "password": "$2a$05$vuLosH5xYWnmwKCx4DfvX.uJ.ICvTiubBXsrGYWEW0xSVA581NY36",
+                "email": "rehamalsobh96@gmail.com",
+                "__v": 0
             }
-            ```
-
+            ``` 
+           
 #### GET /getCoursetodashboard
 * sending
    - *body* : ---
  
     - *headers*: 
         - bearer Auth 
-                        ```
                 {
-                token :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
                 }
-                ```
+                
            
 
 * response
@@ -347,25 +345,25 @@ The courses schema holds the following information:
 * sending
    - *body* : 
         ```
-        {
-        "username":"Reham Omar AL-Sobh",
-        "password":"9",
-        "role":"instructor",
-        "email":"rehamalsobh96@gmail.com"
-        }
-        ```
+            {
+                "username":"Reham Omar AL-Sobh",
+            "password":"9",
+            "role":"instructor",
+            "email":"rehamalsobh96@gmail.com"
+            }
+            ``` 
+       
     - *headers*: 
         - bearer Auth 
                 {
-                token :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
                 }
                 
            
 
 * response
-        ```
-        {
-        "role": "instructor",
+  ```
+            {"role": "instructor",
         "courses": [
             {
                 "course_name": "html",
@@ -382,9 +380,9 @@ The courses schema holds the following information:
         "password": "9",
         "email": "rehamalsobh96@gmail.com",
         "__v": 0
-        }
-        ```
-
+            }
+            ``` 
+       
 
 ## Testing
 Testing is run through jest. To test, run
