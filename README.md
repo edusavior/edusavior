@@ -172,7 +172,7 @@ The courses schema holds the following information:
     - *headers*: 
         - bearer Auth 
         {
-        token :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo
+        token : ` eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
         }
     
 
@@ -211,29 +211,29 @@ The courses schema holds the following information:
 
     - *headers*: 
         - bearer Auth 
-                        ```
                 {
-                token :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
                 }
-                ```
-
+            
 * response
   - subject : html
 
-    ```{  "course": 
-        [
-            {
-                "quiz": [],
-                "_id": "5ef30b9b42c2c50a6433da3a",
-                "course_name": "html",
-                "subject": "html",
-                "instructor": "Reham",
-                "description": "teach from tha basic up to heigh level ",
-                "literature_time": "9-11 am",
-                "__v": 0
+        ```
+        {  "course": 
+            [
+                {
+                    "quiz": [],
+                    "_id": "5ef30b9b42c2c50a6433da3a",
+                    "course_name": "html",
+                    "subject": "html",
+                    "instructor": "Reham",
+                    "description": "teach from tha basic up to heigh level ",
+                    "literature_time": "9-11 am",
+                    "__v": 0
+                }
+            ]
             }
-        ]
-        }```
+            ```
 #### POST /addCourse
 * sending
    - *body* : 
@@ -249,71 +249,67 @@ The courses schema holds the following information:
         ```
     - *headers*: 
         - bearer Auth 
-                        ```
                 {
-                token :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo
+                token : ` eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
                 }
-                ```
+            
            
 
 * response
-        ```
-        {
-        "quiz": [],
-        "_id": "5ef30b9b42c2c50a6433da3a",
-        "course_name": "html",
-        "subject": "html",
-        "instructor": "Reham",
-        "description": "teach from tha basic up to heigh level ",
-        "literature_time": "9-11 am",
-        "__v": 0
-        }
-        ```
+            ```
+            {
+            "quiz": [],
+            "_id": "5ef30b9b42c2c50a6433da3a",
+            "course_name": "html",
+            "subject": "html",
+            "instructor": "Reham",
+            "description": "teach from tha basic up to heigh level ",
+            "literature_time": "9-11 am",
+            "__v": 0
+            }
+            ```
   
 #### POST /addCoursetodashboard
 * sending
    - *body* : 
-        ```
-        {
-        "course_name":"html",
-    "subject":"html",
-    "instructor":"Reham",
-    "description" :"teach from tha basic up to heigh level ",
-    "literature_time" : "9-11 am",
-    "quiz" : []
-        }
-        ```
+            ```
+            {
+            "course_name":"html",
+        "subject":"html",
+        "instructor":"Reham",
+        "description" :"teach from tha basic up to heigh level ",
+        "literature_time" : "9-11 am",
+        "quiz" : []
+            }
+            ```
     - *headers*: 
         - bearer Auth 
-                        ```
                 {
                 token :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo
-                }
-                ```
-           
+                } 
 
 * response
-        ```
-        {
-        "role": "instructor",
-        "courses": [
+            ```
             {
-                "course_name": "html",
-                "subject": "html",
-                "instructor": "Reham",
-                "description": "teach from tha basic up to heigh level ",
-                "literature_time": "9-11 am",
-                "quiz": []
+            "role": "instructor",
+            "courses": [
+                {
+                    "course_name": "html",
+                    "subject": "html",
+                    "instructor": "Reham",
+                    "description": "teach from tha basic up to heigh level ",
+                    "literature_time": "9-11 am",
+                    "quiz": []
+                }
+            ],
+            "questions": [],
+            "_id": "5ef308be42c2c50a6433da39",
+            "username": "Reham",
+            "password": "$2a$05$vuLosH5xYWnmwKCx4DfvX.uJ.ICvTiubBXsrGYWEW0xSVA581NY36",
+            "email": "rehamalsobh96@gmail.com",
+            "__v": 0
             }
-        ],
-        "questions": [],
-        "_id": "5ef308be42c2c50a6433da39",
-        "username": "Reham",
-        "password": "$2a$05$vuLosH5xYWnmwKCx4DfvX.uJ.ICvTiubBXsrGYWEW0xSVA581NY36",
-        "email": "rehamalsobh96@gmail.com",
-        "__v": 0
-        }
-        ```
+            ```
 
 #### GET /getCoursetodashboard
 * sending
