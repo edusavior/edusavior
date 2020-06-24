@@ -512,7 +512,7 @@ The answer schema holds the following information:
    - *body* : 
             ```
                     {    "title":"css",
-            "content":"how to change background color?"
+                         "content":"how to change background color?"
                     }
                     ```
    
@@ -530,10 +530,10 @@ The answer schema holds the following information:
         ```
                     {
                         "answers": [],
-            "_id": "5ef369e0ecc2152440b26a31",
-            "title": "css",
-            "content": "how to change background color?",
-            "__v": 0
+                        "_id": "5ef369e0ecc2152440b26a31",
+                        "title": "css",
+                        "content": "how to change background color?",
+                        "__v": 0
                     }
                     ```    
 #### DELETE /deleteQuestion/:qId
@@ -544,11 +544,12 @@ The answer schema holds the following information:
    - *body* : ----
         - *headers*: 
         - bearer Auth 
-                ```
-                {
-                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
-                }
-                ```
+
+                    ```
+                    {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
+                    }
+                    ```
                 
            
 
