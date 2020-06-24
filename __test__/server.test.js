@@ -11,7 +11,7 @@ let id;
 describe('signin/up',()=>{
 
   it('POST to /signup to create a new user', ()=>{
-    let obj = {'username': 'reham', 'password': '1234','email':'re@gmail.com','role':'student'};
+    let obj = {'username': 'reham', 'password': '1234','email':'rehamalsobh96@gmail.com','role':'student'};
     return  mockRequest.post('/signup')
       .send(obj)
       .then(result=>{
@@ -43,13 +43,13 @@ describe('signin/up',()=>{
       
   });
   it('catch error with same body send in signup ', ()=>{
-    let obj = {'username': 'reham', 'password': '1234','email':'re@gmail.com','role':'student'};
+    let obj = {'username': 'reham', 'password': '1234','email':'rehamalsobh96@gmail.com','role':'student'};
 
     return  mockRequest.post('/signup')
       .send(obj)
       .then(result=>{
         // console.log('nnnnnnnnnnnnnnnnnn',result.body);
-        expect(result.status).toEqual(403);
+        expect(result.status).toEqual(500);
         // expect(result.body).toEqual('user already exists');
 
   
@@ -61,7 +61,7 @@ describe('signin/up',()=>{
 describe('sever', () => {
 
   it('should respond with 200 and add course  on /addCoursetodashboard', () => {
-    let obj = {'username': 'osama', 'password': '1234','email':'re@gmail.com','role':'instructor'};
+    let obj = {'username': 'osama', 'password': '1234','email':'rehamalsobh96@gmail.com','role':'instructor'};
     return  mockRequest.post('/signup')
       .send(obj)
       .then(result=>{
@@ -100,7 +100,7 @@ describe('sever', () => {
       .then(data=>{
         expect(data.body.user[0].username).toEqual('osama');
         expect(data.body.user[0].role).toEqual('instructor');
-        expect(data.body.user[0].email).toEqual('re@gmail.com');
+        expect(data.body.user[0].email).toEqual('rehamalsobh96@gmail.com');
 
       });
   });
@@ -114,7 +114,7 @@ describe('sever', () => {
   });
 
   it('should respond to a put request to /updateuserinfo/:id', ()=>{
-    let updateObj =  {'username': 'nada', 'password': '1234','email':'nada@gmail.com','role':'student'};
+    let updateObj =  {'username': 'nada', 'password': '1234','email':'rehamalsobh96@gmail.com','role':'student'};
     return mockRequest.put(`/updateuserinfo/${id}`).set({ 'authorization':`Bearer ${token}`})
       .send(updateObj )
       .then(results => {
@@ -125,7 +125,7 @@ describe('sever', () => {
            
   });
 
-  it('should respond to a get request to //course/:subject', ()=>{
+  it('should respond to a get request to /course/:subject', ()=>{
     let course = {'course_name': 'arabic', 'subject': 'arabic','instructor':'eman','description':'litreture','literature_time':'12-2pm'};
     return mockRequest.post('/addCourse').set({ 'authorization':`Bearer ${token}`})
       .send(course)
