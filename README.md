@@ -271,17 +271,18 @@ The courses schema holds the following information:
        
 #### POST /addCoursetodashboard
 * sending
-   - *body* : 
-            ```
-            {
-            "course_name":"html",
+   - *body* :
+   ```
+        {
+           "course_name":"html",
         "subject":"html",
         "instructor":"Reham",
         "description" :"teach from tha basic up to heigh level ",
         "literature_time" : "9-11 am",
         "quiz" : []
-            }
-            ```
+        }
+        ``` 
+        
     - *headers*: 
         - bearer Auth 
                 {
