@@ -324,9 +324,8 @@ The courses schema holds the following information:
            
 
 * response
-        ```
-        {
-    "courses": [
+  ```
+            { "courses": [
             {
                 "course_name": "html",
                 "subject": "html",
@@ -336,9 +335,9 @@ The courses schema holds the following information:
                 "quiz": []
             }
         ]
-        }
-        ```
-
+            }
+            ```
+      
 #### PUT /updateuserinfo/:id
   - id : '5ef308be42c2c50a6433da39'
 
