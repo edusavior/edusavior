@@ -381,8 +381,281 @@ The courses schema holds the following information:
         "__v": 0
             }
             ``` 
-       
 
+### question and answer schema
+The question schema holds the following information:
+
+- A required  title string.
+- A required  content string.
+- A required comments string.
+- A required timestamps true.
+
+The answer schema holds the following information:
+- A required  content string.
+- A required  post string.
+
+* Question routes:
+
+#### GET /getAllQuestions
+- to get all question
+* sending
+   - *body* : ---
+ 
+    - *headers*: 
+        - bearer Auth 
+                {
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
+                }
+                
+           
+
+* response
+  ```
+            { [
+       {
+        "answers": [],
+        "_id": "5ef3694eecc2152440b26a30",
+        "title": "json",
+        "content": "what the json stand for ?",
+        "__v": 0
+    },
+    {
+        "answers": [],
+        "_id": "5ef369e0ecc2152440b26a31",
+        "title": "html",
+        "content": "how to write a tag ?",
+        "__v": 0
+    }
+]
+            }
+            ```
+
+#### POST /addQuestion
+- to post question
+* sending
+   - *body* : 
+    ```
+            {   "title":"json",
+    "content":"what the json stand for ?"
+            }
+            ```
+ 
+    - *headers*: 
+        - bearer Auth 
+                {
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
+                }
+                
+           
+
+* response
+  ```
+            {
+                {
+    "answers": [],
+    "_id": "5ef3694eecc2152440b26a30",
+    "title": "json",
+    "content": "what the json stand for ?",
+    "__v": 0
+} 
+            }
+            ```  
+
+#### GET /question/:qId
+- to get specific question
+* sending
+   - *body* : ---
+   
+    - *headers*: 
+        - bearer Auth 
+                {
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
+                }
+                
+           
+
+* response
+  ```
+            {
+                [
+    {
+        "answers": [],
+        "_id": "5ef3694eecc2152440b26a30",
+        "title": "json",
+        "content": "what the json stand for ?",
+        "__v": 0
+    }
+] 
+            }
+            ```    
+#### PUT /updateQuestion/:qId
+- to get specific question
+- "_id": "5ef3694eecc2152440b26a30"
+
+* sending
+   - *body* : 
+     ```
+            {    "title":"css",
+    "content":"how to change background color?"
+            }
+            ```
+   
+    - *headers*: 
+        - bearer Auth 
+                {
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
+                }
+                
+           
+
+* response
+  ```
+            {
+                "answers": [],
+    "_id": "5ef369e0ecc2152440b26a31",
+    "title": "css",
+    "content": "how to change background color?",
+    "__v": 0
+            }
+            ```    
+#### DELETE /deleteQuestion/:qId
+- to delet question
+- "_id": "5ef3694eecc2152440b26a30"
+* sending
+   - *body* : 
+        ```
+                { 
+                }
+                ```
+
+    - *headers*: 
+        - bearer Auth 
+                {
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
+                }
+                
+           
+
+* response
+  ```
+            { 
+                "status": "sucssesfully deleted"
+            }
+            ``` 
+<!-- ------------------------------------------ -->
+* Answer routes :
+#### GET /:qId/answer
+- to get all answers for specific question
+* sending
+   - *body* : ---
+ 
+    - *headers*: 
+        - bearer Auth 
+                {
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
+                }
+                
+           
+
+* response
+  ```
+            { [
+    {
+        "answers": [
+            {
+                "_id": "5ef39880d9854e2e252d2056",
+                "content": "use backgroud : color",
+                "question": "5ef369e0ecc2152440b26a31",
+                "__v": 0
+            }
+        ],
+        "_id": "5ef369e0ecc2152440b26a31",
+        "title": "css",
+        "content": "how to change background color?",
+        "__v": 3
+    }
+]
+            }
+            ```
+
+#### POST /:qId/answer
+- to post answer
+- "id"="5ef369e0ecc2152440b26a31"
+* sending
+   - *body* : 
+        ```
+                { 
+                     "content":"use backgroud : color" 
+                }
+                ```
+ 
+    - *headers*: 
+        - bearer Auth 
+                {
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
+                }
+                
+           
+
+* response
+  ```
+            { "_id": "5ef39880d9854e2e252d2056",
+    "content": "use backgroud : color",
+    "question": "5ef369e0ecc2152440b26a31",
+    "__v": 0
+            }
+            ```  
+
+#### PUT /answer/:answerId
+- to update specific answer
+- "_id": "5ef39880d9854e2e252d2056"
+
+* sending
+   - *body* : 
+     ```
+            {      "content":"use backgroud-color"
+            }
+            ```
+   
+    - *headers*: 
+        - bearer Auth 
+                {
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
+                }
+                
+           
+
+* response
+  ```
+            {
+            "_id": "5ef39880d9854e2e252d2056",
+    "content": "use backgroud-color",
+    "question": "5ef369e0ecc2152440b26a31",
+    "__v": 0    
+            }
+            ```    
+#### DELETE /answer/:answerId
+- to delet answer
+- "_id": "5ef39880d9854e2e252d2056"
+* sending
+   - *body* : ---
+        
+        - *headers*: 
+        - bearer Auth 
+                {
+                token :  `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo`
+                }
+                
+           
+
+* response
+  ```
+            { 
+                "status": "sucssesfully deleted"
+            }
+            ``` 
+
+                 
 ## Testing
 Testing is run through jest. To test, run
 

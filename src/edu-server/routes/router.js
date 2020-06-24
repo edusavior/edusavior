@@ -12,9 +12,8 @@ const quiz_model = require('../models/quiz/quiz-model.js');
 // const question = require('../models/q_and_answer/questions-model.js');
 const bearerAuth = require('../../auth/middlewaare/bearer-auth.js');
 const acl = require('../../auth/middlewaare/acl.js');
-
-
-
+const question = require('../models/question/question-model.js');
+const answer = require('../models/answer/answer-model.js');
 
 //routes
 
@@ -42,7 +41,7 @@ router.post('/questions', bearerAuth, acl('addQuiz'), questionsHandler);
  */
 async function allCoursesHandler(req,res){
 
-  const allCourses = await  courses.get();
+  const allCourses = courses.get();
   res.json({allCourses});
 
 }
@@ -74,7 +73,7 @@ async function addCourseHandler(req,res){
 async function addCoursetodashboardHandler(req,res){
 
   try {
-    const user = await users.get({ username: req.user.username });
+    const user = users.get({ username: req.user.username });
     user[0].courses.push(req.body);
     const data = await users.update(user[0]._id, user[0]);
     res.json(data);
@@ -95,7 +94,7 @@ async function getuserinfoHandler(req,res){
 
 
   try {
-    const user = await users.get({ username: req.user.username });
+    const user = users.get({ username: req.user.username });
     res.json({ user });
   } catch (error) {
     console.error(error);
@@ -114,7 +113,7 @@ async function getCoursetodashboardHandler(req,res){
 
 
   try {
-    const user = await users.get({ username: req.user.username });
+    const user = users.get({ username: req.user.username });
     const courses = user[0].courses;
     res.json({ courses });
   } catch (error) {
@@ -134,7 +133,7 @@ async function getCoursesHandler(req,res){
 
 
   try {
-    const course = await courses.get({ subject: req.params.subject });
+    const course = courses.get({ subject: req.params.subject });
     res.json({ course });
   } catch (error) {
     console.error(error);
@@ -187,22 +186,93 @@ async function questionsHandler(req, res) {
     return res.status(500).json({ 'error': error });
   }
 
-
-
-
-  // async function chatValidation(req, res) {
-  //   try {
-  //     let findUser = mainSchema.generateToken(req.data.username);
-  //     console.log('user', req.data.username);
-  //     res.status(200).json({ 'user': findUser });
-
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
-
 }
 
+
+
+
+
+// ---------------------------------------
+
+
+router.get('/getAllQuestions',bearerAuth, async (req, res) => {
+  const allquestion= await question.get();
+  console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa',allquestion);
+
+  res.json(allquestion);
+});
+
+router.post('/addQuestion', bearerAuth,async (req, res) => {
+  const addQ=await question.create(req.body);
+  res.json(addQ);
+ 
+});
+
+router.get('/question/:qId',bearerAuth, async (req, res) => {
+  const getOneQusetion= await question.get( {_id:req.params.qId });
+  res.json(getOneQusetion);
+
+});
+
+router.put('/updateQuestion/:qId',bearerAuth, async (req, res) => {
+  const updateQusetion=await question.update(req.params.qId,req.body);
+  res.json(updateQusetion);
+
+});
+
+router.delete('/deleteQuestion/:qId',bearerAuth, async (req, res) => {
+  try{
+    await question.delete(req.params.qId);
+    res.json({status:'sucssesfully deleted'});
+
+  }catch(e){res.json({status:'invalid Id'});}
+  
+});
+
+
+// /Comments
+
+// Create a Comment
+router.post('/:qId/answer',bearerAuth, async (req, res) => {
+  //Find a POst
+  const _question =await question.get({ _id: req.params.qId });
+  
+
+  // //Create a Comment
+  const obj={content:req.body.content,question:_question[0]._id};
+  const addanswer = await answer.create(obj);
+  
+  // Associate Post with comment
+  _question[0].answers.push(addanswer._id);
+  await _question[0].save();
+
+  res.send(addanswer);
+});
+
+//Read a Comment
+
+router.get('/:qId/answer', bearerAuth,async (req, res) => {
+  const questionAndAnswers = await question.get({ _id: req.params.qId }).populate(
+    'answers',
+  );
+  res.json(questionAndAnswers);
+});
+
+// Edit a comment
+router.put('/answer/:answerId',bearerAuth, async (req, res) => {
+  const updateAnswer = await answer.update(req.params.answerId,req.body);
+  
+  res.json(updateAnswer);
+});
+
+// delete a comment
+router.delete('/answer/:answerId',bearerAuth, async (req, res) => {
+  try{
+    await answer.delete(req.params.answerId);
+    res.json({status:'sucssesfully deleted'});
+
+  }catch(e){res.json({status:'invalid Id'});}
+  
+});
 
 module.exports = router;
