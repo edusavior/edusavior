@@ -632,11 +632,13 @@ The answer schema holds the following information:
 - "_id": "5ef39880d9854e2e252d2056"
 
 * sending
-   - *body* : 
-        ```
-                {      "content":"use backgroud-color"
+   - *body* :
+   ```
+                {"content":"use backgroud-color"
                 }
-                ```
+                ```  
+
+     
    
     - *headers*: 
         - bearer Auth 
