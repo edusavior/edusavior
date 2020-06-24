@@ -141,21 +141,21 @@ Creates a new user profile and returns a unique token that the user must then pa
   - http://localhost:3000/
   * Response
 
-        ```
-        {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0gQUwtU29iaCIsInJvbGUiOiJzdHVkZW50IiwiY2FwYWJpbGl0aWVzIjpbInJlYWQiXSwiaWF0IjoxNTkyOTg1NTcwfQ.yKrwUzMbgS8yy6fg5CQhw5w3T1fJiMiLOIPfe4K20Qw",
-    "user": {
-    "role": "student",
-    "courses": [],
-    "questions": [],
-    "_id": "5ef307e242c2c50a6433da38",
-    "username": "Reham AL-Sobh",
-    "password": "$2a$05$b.NljSfihQc.uEses31mkuu/2xjO6rtJx6xPw2ZA3Q.hmOwahNQm2",
-    "email": "email@gmail.com",
-    "__v": 0
-    }
+            ```
+            {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0gQUwtU29iaCIsInJvbGUiOiJzdHVkZW50IiwiY2FwYWJpbGl0aWVzIjpbInJlYWQiXSwiaWF0IjoxNTkyOTg1NTcwfQ.yKrwUzMbgS8yy6fg5CQhw5w3T1fJiMiLOIPfe4K20Qw",
+        "user": {
+        "role": "student",
+        "courses": [],
+        "questions": [],
+        "_id": "5ef307e242c2c50a6433da38",
+        "username": "Reham AL-Sobh",
+        "password": "$2a$05$b.NljSfihQc.uEses31mkuu/2xjO6rtJx6xPw2ZA3Q.hmOwahNQm2",
+        "email": "email@gmail.com",
+        "__v": 0
         }
-        ```
+            }
+            ```
   
 ### Courses Schema
 
@@ -171,11 +171,10 @@ The courses schema holds the following information:
 * sending
     - *headers*: 
         - bearer Auth 
-                ```
         {
         token :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo
         }
-        ```
+    
 
 * response
 
@@ -360,11 +359,10 @@ The courses schema holds the following information:
         ```
     - *headers*: 
         - bearer Auth 
-                        ```
                 {
                 token :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo
                 }
-                ```
+                
            
 
 * response
@@ -385,51 +383,6 @@ The courses schema holds the following information:
         "_id": "5ef308be42c2c50a6433da39",
         "username": "Reham Omar AL-Sobh",
         "password": "9",
-        "email": "rehamalsobh96@gmail.com",
-        "__v": 0
-        }
-        ```
-
-#### POST /questions
-* sending
-   - *body* : 
-        ```
-        {
-        "course_name":"html",
-    "subject":"html",
-    "instructor":"Reham",
-    "description" :"teach from tha basic up to heigh level ",
-    "literature_time" : "9-11 am",
-    "quiz" : []
-        }
-        ```
-    - *headers*: 
-        - bearer Auth 
-                        ```
-                {
-                token :  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4NTc5MH0.VdhgZx3f15MQCIeJ1QeTfC10YcJ9elhOGq2OvmHHqvo
-                }
-                ```
-           
-
-* response
-        ```
-        {
-        "role": "instructor",
-        "courses": [
-            {
-                "course_name": "html",
-                "subject": "html",
-                "instructor": "Reham",
-                "description": "teach from tha basic up to heigh level ",
-                "literature_time": "9-11 am",
-                "quiz": []
-            }
-        ],
-        "questions": [],
-        "_id": "5ef308be42c2c50a6433da39",
-        "username": "Reham",
-        "password": "$2a$05$vuLosH5xYWnmwKCx4DfvX.uJ.ICvTiubBXsrGYWEW0xSVA581NY36",
         "email": "rehamalsobh96@gmail.com",
         "__v": 0
         }
