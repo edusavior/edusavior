@@ -232,19 +232,19 @@ The courses schema holds the following information:
                     "__v": 0
                 }
             ]
-            }
+        }
             ```
 #### POST /addCourse
 * sending
    - *body* : 
         ```
         {
-    "course_name":"html",
-    "subject":"html",
-    "instructor":"Reham",
-    "description" :"teach from tha basic up to heigh level ",
-    "literature_time" : "9-11 am",
-    "quiz" : []
+            "course_name":"html",
+            "subject":"html",
+            "instructor":"Reham",
+            "description" :"teach from tha basic up to heigh level ",
+            "literature_time" : "9-11 am",
+            "quiz" : []
         }
         ```
     - *headers*: 
@@ -258,14 +258,14 @@ The courses schema holds the following information:
 * response
             ```
             {
-            "quiz": [],
-            "_id": "5ef30b9b42c2c50a6433da3a",
-            "course_name": "html",
-            "subject": "html",
-            "instructor": "Reham",
-            "description": "teach from tha basic up to heigh level ",
-            "literature_time": "9-11 am",
-            "__v": 0
+                "quiz": [],
+                "_id": "5ef30b9b42c2c50a6433da3a",
+                "course_name": "html",
+                "subject": "html",
+                "instructor": "Reham",
+                "description": "teach from tha basic up to heigh level ",
+                "literature_time": "9-11 am",
+                "__v": 0
             }
             ```
   
