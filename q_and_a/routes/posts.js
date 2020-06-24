@@ -79,7 +79,7 @@ router.put('/comment/:commentId', async (req, res) => {
   const comment = await Comment.findByIdAndUpdate({
     _id: req.params.commentId,
   }, req.body,
-    { new: true, runValidators: true },
+  { new: true, runValidators: true },
   );
   res.send(comment);
 });
