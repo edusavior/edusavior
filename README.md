@@ -67,37 +67,40 @@ The user schema holds the following information:
 #### POST /signup
 Creates a new user profile and returns a unique token that the user must then pass to reach the other endpoints.
 
-**sending**
-body : 
+* sending
+    - *body* : 
+        ```
+        {
+        "username":"Reham",
+            "password":"9",
+            "role":"instructor",
+            "email":"rehamalsobh96@gmail.com"
+        }
+        ```
 
+    - *headers*:.....
 
- `{
-    "username":"Reham",
-    "password":"9",
-    "role":"instructor",
-    "email":"rehamalsobh96@gmail.com"
-
-}`
-
-headers:.....
-
-**response**
-`{
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
-}`
+* response
+    ```
+    {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4Mjg0Mn0.qWs9SfK3lA6BXNGjWeEnhATugj4gO0tg994jNwqdGTg"
+    }
+    ```
 
 #### post /login
 Allows existing users to log in and returns a unique token that the user must then pass to reach the other endpoints.
 
-**sending**
-body : ....
+* sending
+    - *body* : ....
 
-headers: 
-  - basic Auth 
-    - username : Reham 
-    - password : 9
+    - *headers*: 
+        - basic Auth 
+            - username : Reham 
+            - password : 9
 
-**response**
+* response
+
+
 `{
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGdvcml0aG0iOiJSUzM4NCIsInVzZXJuYW1lIjoiUmVoYW0iLCJyb2xlIjoiaW5zdHJ1Y3RvciIsImNhcGFiaWxpdGllcyI6WyJyZWFkIiwiYWRkY291cnNlIl0sImlhdCI6MTU5Mjk4MzA1Mn0.uCTIhz9HxwHmwXpuZl69yhCq3ta8q-nAkJVMa0AdN14",
     "user": {
