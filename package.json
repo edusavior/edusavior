@@ -29,7 +29,7 @@
     "superagent": "^5.2.2"
   },
   "scripts": {
-    "start": "node index.js",
+    "start":"node index.js",
     "test": "jest --coverage --verbose",
     "lint": "eslint '**/*.js'",
     "doc": "jsdoc -c jsdoc.json"
