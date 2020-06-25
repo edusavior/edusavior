@@ -27,7 +27,7 @@ async function exchangeCodeForToken(code) {
       code: code,
       client_id: CLIENT_ID_LN,
       client_secret: CLIENT_SECRET_LN,
-      redirect_uri: 'https://edusavior.herokuapp.com/linkedinoauth',
+      redirect_uri: 'http://localhost:3000/linkedIn_oauth',
       grant_type: 'authorization_code',
     });
     let accessToken = tokenResponse.body.access_token;
