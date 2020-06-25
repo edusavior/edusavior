@@ -7,7 +7,7 @@
     "start": "node index.js",
     "test": "jest --coverage --verbose",
     "lint": "eslint '**/*.js'",
-    "doc":"jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "express": "^4.17.1",
     "googleapis": "^52.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.19",
+    "mongoose": "^5.9.20",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.0",
     "superagent": "^5.2.2"
@@ -40,13 +40,7 @@
     "@code-fellows/supergoose": "^1.0.2",
     "eslint": "^7.3.0",
     "jest": "^26.0.1",
-
-
-
     "lint": "^0.7.0",
-
     "jsdoc": "^3.6.4"
-
-
   }
 }
