@@ -22,12 +22,10 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.20",
     "morgan": "^1.10.0",
-    "node-fetch": "^2.6.0"
-  },
-  "devDependencies": {
-    "@code-fellows/supergoose": "^1.0.2",
+    "node-fetch": "^2.6.0",
     "superagent": "^5.2.2"
   },
+  "devDependencies": {},
   "scripts": {
     "start": "node index.js",
     "test": "jest --coverage --verbose",
