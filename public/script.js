@@ -21,7 +21,7 @@ let URL_linkedIn='https://www.linkedin.com/oauth/v2/authorization';
 let option={
   response_type:'code',
   client_id:'77y0bfyk5tckn8',
-  redirect_uri: 'http://localhost:3000/linkedIn_oauth',
+  redirect_uri: 'https://edusavior.herokuapp.com/linkedinoauth',
   scope:'r_liteprofile',
 };
 let QueryString=Object.keys(option).map((key)=>{
