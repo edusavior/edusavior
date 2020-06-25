@@ -1,13 +1,36 @@
 {
   "name": "edusavior",
   "version": "1.0.0",
-  "description": "## Team Member :   - 1. Hammad ali   - 2. Osama Mousa    - 3. Reham Al-Sobh   - 4. Amal Almomani",
+  "description": "# Project name : Edusavior",
   "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "devcert": "^1.1.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.3.0",
+    "express": "^4.17.1",
+    "googleapis": "^52.1.0",
+    "jest": "^26.0.1",
+    "jsdoc": "^3.6.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.20",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.6.0",
+    "superagent": "^5.2.2"
+  },
+  "devDependencies": {},
   "scripts": {
     "start": "node index.js",
     "test": "jest --coverage --verbose",
     "lint": "eslint '**/*.js'",
-    "doc": "jsdoc -c jsdoc.json"
+    "doc":"jsdoc -c jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -19,28 +42,5 @@
   "bugs": {
     "url": "https://github.com/edusavior/edusavior/issues"
   },
-  "homepage": "https://github.com/edusavior/edusavior#readme",
-  "dependencies": {
-    "base-64": "^0.1.0",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "debug": "^4.1.1",
-    "devcert": "^1.1.1",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "googleapis": "^52.1.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.20",
-    "morgan": "^1.10.0",
-    "node-fetch": "^2.6.0",
-    "superagent": "^5.2.2"
-  },
-  "devDependencies": {
-    "@code-fellows/supergoose": "^1.0.2",
-    "eslint": "^7.3.0",
-    "jest": "^26.0.1",
-    "lint": "^0.7.0",
-    "jsdoc": "^3.6.4"
-  }
+  "homepage": "https://github.com/edusavior/edusavior#readme"
 }
