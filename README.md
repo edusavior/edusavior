@@ -87,6 +87,28 @@ Creates a new user profile and returns a unique token that the user must then pa
     }
     ```
 
+- **verify email**
+if you send wrong email 
+* sending
+    - *body* : 
+        ```
+        {
+        "username":"Reham",
+            "password":"9",
+            "role":"instructor",
+            "email":"rehamcvs@gmail.com"
+        }
+        ```
+
+    - *headers*:.....
+
+* response
+    ```
+    {
+        The mailbox doesn't exist.
+    }
+    ```
+
 #### post /login
 Allows existing users to log in and returns a unique token that the user must then pass to reach the other endpoints.
 
