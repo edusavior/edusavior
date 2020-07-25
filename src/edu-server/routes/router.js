@@ -21,8 +21,10 @@ const acl = require('../../auth/middlewaare/acl.js');
 router.get('/allCourses', bearerAuth, allCoursesHandler);
 router.get('/course/:subject', bearerAuth, getCoursesHandler);
 router.post('/addCourse', bearerAuth, acl('addcourse'), addCourseHandler);
-router.post('/addCoursetodashboard', bearerAuth, addCoursetodashboardHandler);
+router.delete('/deleteCourse/:id', bearerAuth, deleteCourseHandler);
+router.post('/addCoursetodashboard/:id', bearerAuth, addCoursetodashboardHandler);
 router.get('/getCoursetodashboard', bearerAuth, getCoursetodashboardHandler);
+router.delete('/deleteCoursetodashboard/:id', bearerAuth, deleteCoursetodashboardHandler);
 router.get('/getuserinfo', bearerAuth, getuserinfoHandler);
 router.put('/updateuserinfo/:id', bearerAuth, updateUserInfoHandler);
 router.post('/questions', bearerAuth, acl('addQuiz'), questionsHandler);
@@ -75,7 +77,8 @@ async function addCoursetodashboardHandler(req,res){
 
   try {
     const user = await users.get({ username: req.user.username });
-    user[0].courses.push(req.body);
+    const oneCourse = await courses.get({ _id: req.params.id });
+    user[0].courses.push(oneCourse[0]);
     const data = await users.update(user[0]._id, user[0]);
     res.json(data);
   } catch (error) {
@@ -186,10 +189,6 @@ async function questionsHandler(req, res) {
   } catch (error) {
     return res.status(500).json({ 'error': error });
   }
-
-
-
-
   // async function chatValidation(req, res) {
   //   try {
   //     let findUser = mainSchema.generateToken(req.data.username);
@@ -201,8 +200,36 @@ async function questionsHandler(req, res) {
   //   }
   // }
 
-
+}
+async function deleteCourseHandler(req,res){
+  console.log('req.params._id' , req.params.id);
+  try {
+    await courses.delete(req.params.id);
+    res.json({ status : 'item deleted' });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
+async function deleteCoursetodashboardHandler(req,res){
+  // console.log('user' , user);
+  // console.log('req.params.id' , req.params.id);
+  try {
+    const user = await users.get({ username: req.user.username });
+    let arr = user[0].courses.filter(i=> req.params.id != i._id);
+    user[0].courses = arr;
+    // console.log('user' , user[0]);
+    const data = await users.update(user[0]._id, user[0]);
+    res.json({data });
+  } catch (error) {
+    console.error(error);
+  }
+}
+// {
+//   "username" : "hammad", 
+//   "password" :"1234",
+//   "email" : "hammad@gmail.com",
+// "role" : "instructor"
+// }
 
 module.exports = router;

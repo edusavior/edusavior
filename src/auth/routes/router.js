@@ -96,40 +96,40 @@ router.get('/linkedIn_oauth', linkedinOuth, (req, res) => {
 
 
 
-async function saveHandler (req,res,next){
-  const verfiy = req.body.email;
-  let url = `https://email-checker.p.rapidapi.com/verify/v1?email=${verfiy}`;
-  superagent.get(url)
-    .set('x-rapidapi-host','email-checker.p.rapidapi.com')
-    .set('x-rapidapi-key','38d26207a5msh5bff551ba95f8b8p1d6710jsn4fe4f49bd360')
-    .set('useQueryString','true')
-    .then(emailData => {
-      const emailSummaries = emailData.body.status;
-      if( emailSummaries === 'valid'){
-        savedEmail(req,res,next);
-      } else{
-        res.send('The mailbox doesn\'t exist.');
-      }
-    });
+// async function saveHandler (req,res,next){
+//   const verfiy = req.body.email;
+//   let url = `https://email-checker.p.rapidapi.com/verify/v1?email=${verfiy}`;
+//   superagent.get(url)
+//     .set('x-rapidapi-host','email-checker.p.rapidapi.com')
+//     .set('x-rapidapi-key','38d26207a5msh5bff551ba95f8b8p1d6710jsn4fe4f49bd360')
+//     .set('useQueryString','true')
+//     .then(emailData => {
+//       const emailSummaries = emailData.body.status;
+//       if( emailSummaries === 'valid'){
+//         savedEmail(req,res,next);
+//       } else{
+//         res.send('The mailbox doesn\'t exist.');
+//       }
+//     });
   
   
-  async function savedEmail(req,res,next){
+  // async function savedEmail(req,res,next){
 
-    try{
-      const user = await users.save(req.body);
-      const token = users.generateToken(user);
-      res.json({ token });
+  //   try{
+  //     const user = await users.save(req.body);
+  //     const token = users.generateToken(user);
+  //     res.json({ token });
       
-    }catch(err){
-      console.error(err);
-      next('server rrrs');
-      // res.status(403).send('user already exists');
-    }
-  }
+  //   }catch(err){
+  //     console.error(err);
+  //     next('server rrrs');
+  //     // res.status(403).send('user already exists');
+  //   }
+  // }
 
  
     
-}
+// }
 /**
  * for /signin
    *  basicAuth will add token to the req
@@ -137,9 +137,9 @@ async function saveHandler (req,res,next){
  * @param {Object} req - request 
  * @param {Object} res -response 
  */
-function signinHandler (req, res)  {
-  res.json({ token: req.token , user: req.user });
-}
+// function signinHandler (req, res)  {
+//   res.json({ token: req.token , user: req.user });
+// }
 
 /**
    * for /oauth
@@ -155,3 +155,13 @@ function oauthentication(req,res){
 
 }
 module.exports = router;
+
+
+
+// {
+//   "course_name" : "E 201", 
+//   "subject" :"English",
+//   "instructor" : "hammad",
+// "description" : "good staff",
+// "literature_time" : "10:00 AM"
+// }

@@ -13,7 +13,7 @@ const SECRET = process.env.SECRET || 'mysecret';
 
 const roles = {
   student : ['read'],
-  instructor : ['read' , 'addcourse'],
+  instructor : ['read' , 'addcourse','deleteCourse'],
 };
 
 

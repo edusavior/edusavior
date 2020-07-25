@@ -21,6 +21,8 @@ const courses = mongoose.Schema({
   subject:{type:String,require:true},
   instructor:{type:String,require:true},
   description : {type:String,require:true},
+  url :{type:String,require:true},
+  img_url: {type:String,require:true},
   literature_time : {type:String,require:true},
   quiz : [],
 });
