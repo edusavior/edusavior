@@ -8,8 +8,9 @@ const express = require('express');
 const users = require('../../auth/models/users/user-model.js');
 const router = express.Router();
 const courses = require('../models/couses/courses-model.js');
-const quiz_model = require('../models/quiz/quiz-model.js');
-// const question = require('../models/q_and_answer/questions-model.js');
+// const quiz_model = require('../models/quiz/quiz-model.js');
+const question = require('../models/questions/question-model');
+const answer = require('../models/answer/answer-model');
 const bearerAuth = require('../../auth/middlewaare/bearer-auth.js');
 const acl = require('../../auth/middlewaare/acl.js');
 
@@ -27,10 +28,14 @@ router.get('/getCoursetodashboard', bearerAuth, getCoursetodashboardHandler);
 router.delete('/deleteCoursetodashboard/:id', bearerAuth, deleteCoursetodashboardHandler);
 router.get('/getuserinfo', bearerAuth, getuserinfoHandler);
 router.put('/updateuserinfo/:id', bearerAuth, updateUserInfoHandler);
-router.post('/questions', bearerAuth, acl('addQuiz'), questionsHandler);
+router.get('/getQuestions', bearerAuth, getQuestionsHandler);
+router.post('/addQuestion/:username', bearerAuth, addQuestionsHandler);
+router.delete('/deleteQuestion/:id', bearerAuth, deleteQuestionHandler);
+router.post('/addAnswer/:id/:username', bearerAuth, addAnswersHandler);
+router.delete('/deleteAnswer/:qid/:aid' , deleteAnswerHandler);
 // router.post('/find', bearerAuth, chatValidation);
 
-
+// 5f1fe623a5d41e498badee26
 //routes handlers
 
 
@@ -224,6 +229,59 @@ async function deleteCoursetodashboardHandler(req,res){
   } catch (error) {
     console.error(error);
   }
+}
+async function addQuestionsHandler (req,res){
+  let obj = {usrename : req.params.username,
+    title : req.body.title,
+    content : req.body.content,
+  };
+  console.log('llllllllll' , obj);
+
+  let oneQuestion = await question.create(obj);
+  res.json(oneQuestion);
+}
+
+async function deleteQuestionHandler(req,res){
+  try{
+    // let obj = await question.get({_id : req.params.id});
+    let obj2 = await question.delete(req.params.id);
+    res.json(obj2);
+  }catch(e){
+    console.error(e);
+
+  }
+}
+
+async function getQuestionsHandler(req,res){
+  try{
+    let questions = await question.get();
+    res.json(questions);
+  }catch(e){
+    console.error(e);
+  }
+  
+}
+async function addAnswersHandler(req,res){
+  try{
+    let ques = await question.get({_id : req.params.id});
+    // console.log('ques' , ques);
+    let objAnswer = {username : req.params.username , content : req.body.content};
+    let oneAnswer = await answer.create(objAnswer);
+    // console.log('oneAnswer' , oneAnswer);
+    ques[0].answers.push(oneAnswer);
+    console.log('ques[0]' , ques[0]);
+    let updatedQuestion = await question.update(ques[0]._id , ques[0]);
+    res.json(updatedQuestion);
+  }catch(e)        {
+    console.error(e);
+  }
+}
+async function deleteAnswerHandler(req,res){
+  let deleteQuestion = await question.get({_id : req.params.qid});
+  let arr = deleteQuestion[0].answers.filter(val => val._id != req.params.aid);
+  deleteQuestion[0].answers = arr;
+  let deltetedQuestion = await question.update(deleteQuestion[0]._id , deleteQuestion[0]);
+  res.json(deltetedQuestion);
 }
 // {
 //   "username" : "hammad", 
