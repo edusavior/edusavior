@@ -23,12 +23,22 @@ module.exports = (req, res, next) => {
     users
       .authenticateBasic(user, pass)
       .then((validUser) => {
-        if(validUser){ 
+        console.log('validUser' , validUser);
+        if(validUser === 'user not found'){ 
+          req.user= 'user not found';
+          next();
+        }else if(validUser){
+          console.log('validUser.............' , validUser , user, pass);
           req.token = users.generateToken(validUser[0]);
           req.user = validUser[0];
+          console.log('req.user' , req.token);
           next();
-        }else{
-          next('this user does not exist!!');
+        }
+        else{
+          req.user='wrong password';
+          next();
+
+          // next('this user does not exist!!');
         }
       })
       .catch((err) => next(err));

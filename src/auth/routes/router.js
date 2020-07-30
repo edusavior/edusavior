@@ -6,7 +6,7 @@
  */
 
 const express = require('express');
-const superagent=require('superagent');
+// const superagent=require('superagent');
 
 const users = require('../models/users/user-model.js');
 const oauth = require('../middlewaare/oauth.js');
@@ -14,7 +14,7 @@ const basicAuth = require('../middlewaare/basic.js');
 // const path = require('path');
 const router = express.Router();
 const linkedinOuth = require('../middlewaare/linkedIn-oauth.js');
-router.post('/signup', saveHandler);
+router.post('/signup', savedEmail);
 
 router.post('/signin', basicAuth, signinHandler);
 router.get('/oauth', oauth, oauthentication);
@@ -40,39 +40,42 @@ router.get('/linkedIn_oauth', linkedinOuth, (req, res) => {
 
 
 
-async function saveHandler (req,res,next){
-  const verfiy = req.body.email;
-  let url = `https://email-checker.p.rapidapi.com/verify/v1?email=${verfiy}`;
-  superagent.get(url)
-    .set('x-rapidapi-host','email-checker.p.rapidapi.com')
-    .set('x-rapidapi-key','38d26207a5msh5bff551ba95f8b8p1d6710jsn4fe4f49bd360')
-    .set('useQueryString','true')
-    .then(emailData => {
-      const emailSummaries = emailData.body.status;
-      if( emailSummaries === 'valid'){
-        savedEmail(req,res,next);
-      } else{
-        res.send('The mailbox doesn\'t exist.');
-      }
-    });
+// async function saveHandler (req,res,next){
+//   console.log('req.body.email', req.body.email);
+//   const verfiy = req.body.email;
+//   let url = `https://email-checker.p.rapidapi.com/verify/v1?email=${verfiy}`;
+//   superagent.get(url)
+//     .set('x-rapidapi-host','email-checker.p.rapidapi.com')
+//     .set('x-rapidapi-key','38d26207a5msh5bff551ba95f8b8p1d6710jsn4fe4f49bd360')
+//     .set('useQueryString','true')
+//     .then(emailData => {
+//       const emailSummaries = emailData.body.status;
+//       console.log('emailSummaries' , emailSummaries);
+//       if( emailSummaries === 'valid'){
+//         savedEmail(req,res,next);
+//       } else{
+//         res.send('The mailbox doesn\'t exist.');
+//       }
+//     }).catch(e => console.error(e));
   
   
-  async function savedEmail(req,res,next){
-
-    try{
-      const user = await users.save(req.body);
-      const token = users.generateToken(user);
-      res.json({ token });
-      
-    }catch(err){
-      console.error(err);
-      next('server rrrs');
-      // res.status(403).send('user already exists');
-    }
-  }
-
- 
     
+    
+    
+// }
+async function savedEmail(req,res,next){
+    
+  try{
+    console.log('userrrrr' , req.body);
+    const user = await users.save(req.body);
+    const token = users.generateToken(user);
+    res.json({ token });
+          
+  }catch(err){
+    console.error(err);
+    next('server rrrs');
+    // res.status(403).send('user already exists');
+  }
 }
 /**
  * for /signin
@@ -82,7 +85,12 @@ async function saveHandler (req,res,next){
  * @param {Object} res -response 
  */
 function signinHandler (req, res)  {
-  res.json({ token: req.token , user: req.user });
+  // console.log('req.user ' ,req.user);
+  if(req.user){
+    res.json({ token: req.token , user: req.user });
+  }else{
+    res.json({  user: req.user.nouser });
+  }
 }
 
 
@@ -113,19 +121,19 @@ router.get('/linkedIn_oauth', linkedinOuth, (req, res) => {
 //     });
   
   
-  // async function savedEmail(req,res,next){
+// async function savedEmail(req,res,next){
 
-  //   try{
-  //     const user = await users.save(req.body);
-  //     const token = users.generateToken(user);
-  //     res.json({ token });
+//   try{
+//     const user = await users.save(req.body);
+//     const token = users.generateToken(user);
+//     res.json({ token });
       
-  //   }catch(err){
-  //     console.error(err);
-  //     next('server rrrs');
-  //     // res.status(403).send('user already exists');
-  //   }
-  // }
+//   }catch(err){
+//     console.error(err);
+//     next('server rrrs');
+//     // res.status(403).send('user already exists');
+//   }
+// }
 
  
     

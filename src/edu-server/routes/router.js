@@ -163,54 +163,54 @@ async function updateUserInfoHandler(req,res){
   res.json(updatedUser);
 }
 
-async function questionsHandler(req, res) {
-  try {
-    let obj = {
-      description: req.body.description,
-      alternatives: [
-        {
-          text: req.body.a1,
-        },
-        {
-          text: req.body.a2,
-        },
-        {
-          text: req.body.a3,
-        },
-        {
-          text: req.body.a4,
-        },
-      ],
-    };
-    obj.alternatives.forEach((val, idx) => {
-      if (req.body.correctAnswer == idx + 1) {
-        val.isCorrect = true;
-      }
-    });
-    const question = await quiz_model.create(
-      obj,
-    );
-    return res.status(201).json(question);
-  } catch (error) {
-    return res.status(500).json({ 'error': error });
-  }
-  // async function chatValidation(req, res) {
-  //   try {
-  //     let findUser = mainSchema.generateToken(req.data.username);
-  //     console.log('user', req.data.username);
-  //     res.status(200).json({ 'user': findUser });
+// async function questionsHandler(req, res) {
+//   try {
+//     let obj = {
+//       description: req.body.description,
+//       alternatives: [
+//         {
+//           text: req.body.a1,
+//         },
+//         {
+//           text: req.body.a2,
+//         },
+//         {
+//           text: req.body.a3,
+//         },
+//         {
+//           text: req.body.a4,
+//         },
+//       ],
+//     };
+//     obj.alternatives.forEach((val, idx) => {
+//       if (req.body.correctAnswer == idx + 1) {
+//         val.isCorrect = true;
+//       }
+//     });
+//     const question = await quiz_model.create(
+//       obj,
+//     );
+//     return res.status(201).json(question);
+//   } catch (error) {
+//     return res.status(500).json({ 'error': error });
+//   }
+//   // async function chatValidation(req, res) {
+//   //   try {
+//   //     let findUser = mainSchema.generateToken(req.data.username);
+//   //     console.log('user', req.data.username);
+//   //     res.status(200).json({ 'user': findUser });
 
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+//   //   } catch (error) {
+//   //     console.error(error);
+//   //   }
+//   // }
 
-}
+// }
 async function deleteCourseHandler(req,res){
   console.log('req.params._id' , req.params.id);
   try {
-    await courses.delete(req.params.id);
-    res.json({ status : 'item deleted' });
+    let deletedcourse  =  await courses.delete(req.params.id);
+    res.json({ deletedcourse });
   } catch (error) {
     console.error(error);
   }

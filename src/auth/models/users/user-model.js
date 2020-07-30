@@ -56,9 +56,10 @@ class Users extends Model {
     const result = await this.get({username : user});
     if(result.length !=0){
       const valid = await bcryptjs.compare(pass, result[0].password);
-      return valid ? result : Promise.reject('wrong password');
+      return valid ?  result : false;
+    }else {
+      return 'user not found';
     }
-
   }
   /**
    * for signin/signup
