@@ -35,7 +35,7 @@ router.post('/addAnswer/:id/:username', bearerAuth, addAnswersHandler);
 router.delete('/deleteAnswer/:qid/:aid' , deleteAnswerHandler);
 // router.post('/find', bearerAuth, chatValidation);
 
-// 5f1fe623a5d41e498badee26
+
 //routes handlers
 
 
