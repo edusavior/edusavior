@@ -4,6 +4,7 @@ const Questions = mongoose.Schema({
   usrename:{type:String,require:true},
   title:{type:String,require:true},
   content:{type:String,require:true},
+  profile_img : {type:String,require:true},
   answers : [],
 });
 

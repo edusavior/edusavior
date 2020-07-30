@@ -25,6 +25,9 @@ const courses = mongoose.Schema({
   img_url: {type:String,require:true},
   literature_time : {type:String,require:true},
   room_id : {type:String,require:true},
+  details : {type:String,require:true},
+  instructor_img : {type:String},
+  start_date : {type:String,require:true},
   quiz : [],
 });
 

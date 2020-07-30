@@ -13,6 +13,7 @@ const question = require('../models/questions/question-model');
 const answer = require('../models/answer/answer-model');
 const bearerAuth = require('../../auth/middlewaare/bearer-auth.js');
 const acl = require('../../auth/middlewaare/acl.js');
+const bcryptjs = require('bcryptjs');
 
 
 
@@ -27,7 +28,7 @@ router.post('/addCoursetodashboard/:id', bearerAuth, addCoursetodashboardHandler
 router.get('/getCoursetodashboard', bearerAuth, getCoursetodashboardHandler);
 router.delete('/deleteCoursetodashboard/:id', bearerAuth, deleteCoursetodashboardHandler);
 router.get('/getuserinfo', bearerAuth, getuserinfoHandler);
-router.put('/updateuserinfo/:id', bearerAuth, updateUserInfoHandler);
+router.put('/updateuserinfo', bearerAuth, updateUserInfoHandler);
 router.get('/getQuestions', bearerAuth, getQuestionsHandler);
 router.post('/addQuestion/:username', bearerAuth, addQuestionsHandler);
 router.delete('/deleteQuestion/:id', bearerAuth, deleteQuestionHandler);
@@ -157,55 +158,15 @@ async function getCoursesHandler(req,res){
  * @param {Object} res -response 
  */
 async function updateUserInfoHandler(req,res){
-  const updatedUser = await users.update(req.params.id , req.body);
+  let user = await users.get({username : req.user.username});
+  req.body.password = await bcryptjs.hash(req.body.password, 5);
+  const updatedUser = await users.update(user[0].id , req.body);
 
 
   res.json(updatedUser);
 }
 
-// async function questionsHandler(req, res) {
-//   try {
-//     let obj = {
-//       description: req.body.description,
-//       alternatives: [
-//         {
-//           text: req.body.a1,
-//         },
-//         {
-//           text: req.body.a2,
-//         },
-//         {
-//           text: req.body.a3,
-//         },
-//         {
-//           text: req.body.a4,
-//         },
-//       ],
-//     };
-//     obj.alternatives.forEach((val, idx) => {
-//       if (req.body.correctAnswer == idx + 1) {
-//         val.isCorrect = true;
-//       }
-//     });
-//     const question = await quiz_model.create(
-//       obj,
-//     );
-//     return res.status(201).json(question);
-//   } catch (error) {
-//     return res.status(500).json({ 'error': error });
-//   }
-//   // async function chatValidation(req, res) {
-//   //   try {
-//   //     let findUser = mainSchema.generateToken(req.data.username);
-//   //     console.log('user', req.data.username);
-//   //     res.status(200).json({ 'user': findUser });
 
-//   //   } catch (error) {
-//   //     console.error(error);
-//   //   }
-//   // }
-
-// }
 async function deleteCourseHandler(req,res){
   console.log('req.params._id' , req.params.id);
   try {
@@ -231,19 +192,19 @@ async function deleteCoursetodashboardHandler(req,res){
   }
 }
 async function addQuestionsHandler (req,res){
+  // let userr = await users.get({usrename : req.user.username});
+  const user = await users.get({ username: req.user.username });
   let obj = {usrename : req.params.username,
     title : req.body.title,
     content : req.body.content,
+    profile_img : user[0].profile_img,
   };
-  console.log('llllllllll' , obj);
-
   let oneQuestion = await question.create(obj);
   res.json(oneQuestion);
 }
 
 async function deleteQuestionHandler(req,res){
   try{
-    // let obj = await question.get({_id : req.params.id});
     let obj2 = await question.delete(req.params.id);
     res.json(obj2);
   }catch(e){
@@ -264,12 +225,10 @@ async function getQuestionsHandler(req,res){
 async function addAnswersHandler(req,res){
   try{
     let ques = await question.get({_id : req.params.id});
-    // console.log('ques' , ques);
-    let objAnswer = {username : req.params.username , content : req.body.content};
+    const user = await users.get({ username: req.user.username });
+    let objAnswer = {username : req.params.username , content : req.body.content , profile_img : user[0].profile_img};
     let oneAnswer = await answer.create(objAnswer);
-    // console.log('oneAnswer' , oneAnswer);
     ques[0].answers.push(oneAnswer);
-    console.log('ques[0]' , ques[0]);
     let updatedQuestion = await question.update(ques[0]._id , ques[0]);
     res.json(updatedQuestion);
   }catch(e)        {
