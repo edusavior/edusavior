@@ -175,10 +175,10 @@ async function updateUserInfoHandler(req,res){
 
 
 async function deleteCourseHandler(req,res){
-  console.log('req.params._id' , req.params.id);
+  // console.log('req.params._id' , req.params.id);
   try {
     let deletedcourse  =  await courses.delete(req.params.id);
-    res.json({ deletedcourse });
+    res.json( deletedcourse );
   } catch (error) {
     console.error(error);
   }
@@ -261,8 +261,10 @@ async function getAppointmentsHandler(req,res) {
 
 async function addAppointmentsHandler(req,res){
   try {
-    let oneAppointment = await appointment.create(req.body);
-    res.json(oneAppointment);
+    // let oneAppointment = await appointment.create(req.body);
+    // console.log('oneAppointment' , oneAppointment);
+    // res.json(oneAppointment);
+    console.log('jjjjjjjjjjj' , req);
   } catch (error) {
     console.error(error);
   }
