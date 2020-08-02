@@ -261,10 +261,10 @@ async function getAppointmentsHandler(req,res) {
 
 async function addAppointmentsHandler(req,res){
   try {
-    // let oneAppointment = await appointment.create(req.body);
+    let oneAppointment = await appointment.create(req.body);
     // console.log('oneAppointment' , oneAppointment);
-    // res.json(oneAppointment);
-    console.log('jjjjjjjjjjj' , req);
+    res.json(oneAppointment);
+    // console.log('jjjjjjjjjjj' , req);
   } catch (error) {
     console.error(error);
   }
