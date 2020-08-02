@@ -9,6 +9,7 @@ const users = require('../../auth/models/users/user-model.js');
 const router = express.Router();
 const courses = require('../models/couses/courses-model.js');
 // const quiz_model = require('../models/quiz/quiz-model.js');
+const appointment = require('../appointment/appointment-model')
 const question = require('../models/questions/question-model');
 const answer = require('../models/answer/answer-model');
 const bearerAuth = require('../../auth/middlewaare/bearer-auth.js');
@@ -34,6 +35,12 @@ router.post('/addQuestion/:username', bearerAuth, addQuestionsHandler);
 router.delete('/deleteQuestion/:id', bearerAuth, deleteQuestionHandler);
 router.post('/addAnswer/:id/:username', bearerAuth, addAnswersHandler);
 router.delete('/deleteAnswer/:qid/:aid' , deleteAnswerHandler);
+router.get('/getAppointments', bearerAuth, getAppointmentsHandler);
+router.post('/addAppointments', bearerAuth, addAppointmentsHandler);
+router.delete('/deleteAppointments/:id', bearerAuth, deleteAppointmentsHandler);
+
+// router.post('/addAppointments', bearerAuth, addAppointmentsHandler);
+
 // router.post('/find', bearerAuth, chatValidation);
 
 
@@ -242,11 +249,56 @@ async function deleteAnswerHandler(req,res){
   let deltetedQuestion = await question.update(deleteQuestion[0]._id , deleteQuestion[0]);
   res.json(deltetedQuestion);
 }
+
+async function getAppointmentsHandler(req,res) {
+  try {
+    let allAppointemants = await appointment.get();
+    res.json({allAppointemants});
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function addAppointmentsHandler(req,res){
+  try {
+    let oneAppointment = await appointment.create(req.body);
+    res.json(oneAppointment);
+  } catch (error) {
+    console.error(error);
+  }
+}
+async function deleteAppointmentsHandler  (req,res){
+  try{
+    let deletedAppointment = await appointment.delete(req.params.id);
+    res.json(deletedAppointment);
+  }catch(e){
+    console.error(e);
+
+  }
+}
+
+
+
 // {
 //   "username" : "hammad", 
 //   "password" :"1234",
 //   "email" : "hammad@gmail.com",
 // "role" : "instructor"
+// }
+
+
+// {
+//   "course_name" : "osama10", 
+//   "subject" :"123",
+//   "instructor" : "hammad@gmail.com",
+// "description" : "instructor",
+// "url"  : "ddd",
+// "img_url" : "osama10", 
+//   "literature_time" :"123",
+//   "room_id" : "hammad@gmail.com",
+// "details" : "instructor",
+// "instructor_img"  : "ddd",
+// "start_date"  : "ddd"
 // }
 
 module.exports = router;
