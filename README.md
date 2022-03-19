@@ -4,7 +4,7 @@
   - 1. Hammad ali
   - 2. Osama Mousa 
   - 3. Reham Al-Sobh
-  - 4. Aaml Almomani
+  - 4. Amal Almomani
 
 
 ## Description for the project:
